@@ -13,4 +13,6 @@ class CategoryController extends Controller
 
     return view('category', compact('allCategories'));
     }
+
+    
 }
