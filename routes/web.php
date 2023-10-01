@@ -28,16 +28,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
+
+
 Route::controller(CategoryController::class)->prefix('/cat')->group(function(){
 
     Route::get('/allCategories','getAllCategories')->name('allCategories');
 
 });
 
+
+
 Route::controller(ProductController::class)->group(function(){
 
     Route::get('/category/{id}','thisCategory')->name('thisCategory');
 
     Route::get('/subcategory/{id}','thisSubCategory')->name('thisSubCategory');
+
+    Route::get('/thisProduct/{id}','getThisProduct')->name('thisProduct');
 
 });
