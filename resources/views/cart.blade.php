@@ -31,7 +31,18 @@ Cart
     <div class="row" style="border:1px dotted black">
         <div class="col-6 offset-3">
             <h5 class="display-4 float-left">Total:{{$total}}</h5>
-            <a href="" class="btn btn-primary float-right mt-3">Naruci</a>
+            @if ($errors->any())
+            @foreach($errors->all() as $error)
+
+            <p style="color: red">{{$error}}</p>
+    
+            @endforeach
+            @endif
+            <form action="{{route('orderExecute')}}" method="POST">
+                @csrf
+                <input type="hidden" name="total" value="{{$total}}">
+                <button class="btn btn-primary float-right mt-3"type="submit" name="save">Naruci</button>
+            </form>
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Models\CategoryModel;
 use Illuminate\Support\Facades\Auth;
@@ -53,3 +54,5 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('/delete/{id}','deleteFromCart')->name('deleteFromCart');
 
 });
+
+Route::post('/order',[OrderController::class,'orderExecute'])->name('orderExecute');
