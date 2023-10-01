@@ -9,8 +9,8 @@ class CategoryController extends Controller
 {
     
     public function getAllCategories(){
-        $allCategories = CategoryModel::all();
-        
-        return view('category',compact('allCategories'));
+        $allCategories = CategoryModel::with('subcategories')->get();
+
+    return view('category', compact('allCategories'));
     }
 }

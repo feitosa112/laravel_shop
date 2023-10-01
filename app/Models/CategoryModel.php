@@ -14,4 +14,9 @@ class CategoryModel extends Model
     ];
     
     use HasFactory;
+
+    public function subcategories()
+    {
+        return $this->hasMany(SubcategoryModel::class, 'category_id', 'id');
+    }
 }

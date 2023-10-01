@@ -14,4 +14,9 @@ class SubcategoryModel extends Model
         'category_id',
     ];
     use HasFactory;
+
+    public function category()
+{
+    return $this->belongsTo(CategoryModel::class, 'category_id', 'id');
+}
 }
