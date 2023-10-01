@@ -26,7 +26,7 @@ Cart
 </div><br>
     
 @endforeach
-
+@if (Auth::user())
 <div class="container">
     <div class="row" style="border:1px dotted black">
         <div class="col-6 offset-3">
@@ -46,5 +46,7 @@ Cart
         </div>
     </div>
 </div>
+@endif
+
     
 @endsection
