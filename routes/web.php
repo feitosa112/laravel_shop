@@ -50,4 +50,6 @@ Route::controller(ProductController::class)->group(function(){
 
     Route::get('/cart','cartView')->name('cartView');
 
+    Route::get('/delete/{id}','deleteFromCart')->name('deleteFromCart');
+
 });

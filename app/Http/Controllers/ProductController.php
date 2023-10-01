@@ -48,6 +48,23 @@ class ProductController extends Controller
 
     public function cartView(){
         $cart = Session::get('cart',[]);
-        return view('cart',compact('cart'));
+        $total = 0;
+        foreach($cart as $product){
+            $total+=$product->price;
+        }
+        return view('cart',compact('cart','total'));
+    }
+
+    public function deleteFromCart($id){
+        $cart = Session::get('cart',[]);
+        if(array_key_exists($id,$cart)){
+            unset($cart[$id]);
+
+            Session::put('cart',$cart);
+
+            return redirect()->back()->with('deleteFromCart','Uspjesno ste obrisali proizvod iz korpe');
+        }else{
+            return redirect()->back()->with('errorDeleteFromCart','Greska,pokusajte ponovo');
+        }
     }
 }
