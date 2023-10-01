@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Models\CategoryModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,13 @@ Auth::routes();
 Route::controller(CategoryController::class)->prefix('/cat')->group(function(){
 
     Route::get('/allCategories','getAllCategories')->name('allCategories');
+
+});
+
+Route::controller(ProductController::class)->group(function(){
+
+    Route::get('/category/{id}','thisCategory')->name('thisCategory');
+
+    Route::get('/subcategory/{id}','thisSubCategory')->name('thisSubCategory');
+
 });

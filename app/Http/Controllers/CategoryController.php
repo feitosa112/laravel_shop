@@ -11,7 +11,7 @@ class CategoryController extends Controller
     public function getAllCategories(){
         $allCategories = CategoryModel::with('subcategories')->get();
 
-    return view('category', compact('allCategories'));
+        return view('category', compact('allCategories'));
     }
 
     

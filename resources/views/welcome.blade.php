@@ -16,7 +16,7 @@ Welcome page
  <div class="row" style="margin-left: 15px">
     @foreach ($categories as $cat)
         <div class="cont" style=";display:flex;flex-direction:column;margin:0 auto;text-align:center;margin-top:5px">
-            <a href="" style="text-decoration: none;color:black">
+            <a href="{{route('thisCategory',['id'=>$cat->id])}}" style="text-decoration: none;color:black">
                 <img src="image/{{$cat->image}}" style="border-radius: 50%;width:50px;height:50px;" alt="">
                 <p style="font-size: 10px">{{$cat->category_name}}</p>    
             </a>

@@ -7,8 +7,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <a href="{{route('allCategories')}}" class="nav-link">Kategorije</a>
-        <a href=""class="nav-link">Arena</a>
       </ul>
+
       
       <ul class="navbar-nav ms-auto">
         <!-- Authentication Links -->
@@ -48,3 +48,6 @@
     </ul>
     </div>
   </nav>
+  <div class="naziv" style="background-color: yellowgreen">
+    <h6 style="text-align:center;letter-spacing:5px;font-size:25px;color:purple">ARENA SHOP CELINAC</h6>
+  </div>
