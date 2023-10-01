@@ -46,4 +46,8 @@ Route::controller(ProductController::class)->group(function(){
 
     Route::get('/thisProduct/{id}','getThisProduct')->name('thisProduct');
 
+    Route::get('/cart/{id}','addToCart')->name('addToCart');
+
+    Route::get('/cart','cartView')->name('cartView');
+
 });

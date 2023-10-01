@@ -13,7 +13,7 @@ This product
                 <img src="/image/{{$cat->product_image}}" style="width: 150px;height:100px" alt="">
                 <p><b>{{$cat->product_name}}</b></p>
                 <a href="" class="btn btn-success btn-sm">{{$cat->price}} KM</a>
-                <a href="" class="btn btn-warning btn-sm">Dodaj u korpu</a>
+                <a href="{{route('addToCart',['id'=>$cat->id])}}" class="btn btn-warning btn-sm">Dodaj u korpu</a>
             </div>
         </a>
             

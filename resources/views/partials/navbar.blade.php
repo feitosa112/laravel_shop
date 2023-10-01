@@ -25,6 +25,8 @@
                 </li>
             @endif
         @else
+            <a href="{{route('cartView')}}" class="nav-link">Cart({{count(Session::get('cart',[]))}})</a>
+                
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
@@ -48,6 +50,6 @@
     </ul>
     </div>
   </nav>
-  <div class="naziv" style="background-color: yellowgreen">
+  <div class="naziv" style="background-color: yellowgreen;">
     <h6 style="text-align:center;letter-spacing:5px;font-size:25px;color:purple">ARENA SHOP CELINAC</h6>
   </div>
