@@ -6,7 +6,7 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <a href="" class="nav-link">Kategorije</a>
+        <a href="{{route('allCategories')}}" class="nav-link">Kategorije</a>
         <a href=""class="nav-link">Arena</a>
       </ul>
       
