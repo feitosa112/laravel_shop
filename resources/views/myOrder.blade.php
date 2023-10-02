@@ -6,7 +6,7 @@ My order
 @endsection
 
 @section('content')
-
+<h4 class="display-4 text-center">My orders</h4><br>
 @if (count($orders) === 0)
 <h4 class="display-4">Jos uvijek nemate niti jednu narudzbu</h4>
 
@@ -19,7 +19,8 @@ My order
       <tr>
         <th scope="col">Order {{$index+1}}</th>
         <th scope="col">Product name</th>
-        <th scope="col">price</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
         <th scope="col">Created at</th>
       </tr>
     </thead>
@@ -29,6 +30,7 @@ My order
         <th scope="row"></th>
         <td>{{$item->product->product_name}}</td>
         <td>{{$item->product->price}}</td>
+        <td>{{$order->status}}</td>
         <td>{{$item->created_at}}</td>
     </tr>
     @endforeach
