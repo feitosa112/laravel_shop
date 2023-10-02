@@ -55,4 +55,5 @@ Route::controller(ProductController::class)->group(function(){
 
 });
 
-Route::post('/order',[OrderController::class,'orderExecute'])->name('orderExecute');
+Route::get('/order',[OrderController::class,'orderExecute'])->name('orderExecute');
+Route::get('/my-order',[OrderController::class,'getMyOrder'])->name('myOrder');

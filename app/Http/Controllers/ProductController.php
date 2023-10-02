@@ -42,7 +42,7 @@ class ProductController extends Controller
         $cart = Session::get('cart',[]);
         $cart[$id] = $product;
         Session::put('cart',$cart);
-
+        
         return redirect()->back()->with('success', 'Proizvod je dodat u korpu.');
     }
 

@@ -16,5 +16,7 @@ class ProductModel extends Model
         'category_id',
         'subcategory_id'
     ];
+
+  
     use HasFactory;
 }

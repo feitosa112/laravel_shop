@@ -15,5 +15,10 @@ class OrderModel extends Model
         'total_amount',
         'shipping_address',
     ];
+
+    public function orderItems()
+{
+    return $this->hasMany(OrderItemModel::class,'order_id');
+}
     use HasFactory;
 }

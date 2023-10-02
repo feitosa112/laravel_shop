@@ -30,19 +30,18 @@ Cart
 <div class="container">
     <div class="row" style="border:1px dotted black">
         <div class="col-6 offset-3">
+            @if (count($cart) === 0)
+                <h4>Vasa korpa je prazna</h4> 
+                
+            
+                
+            @else
             <h5 class="display-4 float-left">Total:{{$total}}</h5>
-            @if ($errors->any())
-            @foreach($errors->all() as $error)
-
-            <p style="color: red">{{$error}}</p>
-    
-            @endforeach
+            <a href="{{route('orderExecute')}}" class="btn btn-primary float-right mt-3"type="submit" name="save">Naruci</a>
             @endif
-            <form action="{{route('orderExecute')}}" method="POST">
-                @csrf
-                <input type="hidden" name="total" value="{{$total}}">
-                <button class="btn btn-primary float-right mt-3"type="submit" name="save">Naruci</button>
-            </form>
+            
+            
+            
         </div>
     </div>
 </div>

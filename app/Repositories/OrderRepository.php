@@ -1,9 +1,9 @@
 <?php 
 namespace App\Repositories;
 
-use App\Http\Requests\OrderExecuteRequest;
 use App\Models\OrderModel;
 use Illuminate\Support\Facades\Auth;
+
 
 class OrderRepository {
     private $orderModel;
@@ -12,18 +12,28 @@ class OrderRepository {
         $this->orderModel = $orderModel;
     }
 
-    public function getOrderExecute(OrderExecuteRequest $request){
+    
+
+    public function getOrderExecute($cart){
         if(Auth::check()){
             $user = Auth::user();
-            $validatedData = $request->validated();
+            $total = 0;
+
+            foreach($cart as $item){
+                $total+=$item->price;
+            }
+            
         }
-        $this->orderModel->create([
+        
+         return $this->orderModel->create([
             'user_id'=>$user->id,
             'status'=>'ordered',
-            'total_amount'=>$validatedData('total'),
+            'total_amount'=>$total,
             'shipping_address' => $user->email
         ]);
     }
+
+  
 
     
 }

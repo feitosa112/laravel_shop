@@ -12,5 +12,10 @@ class OrderItemModel extends Model
         'product_id',
         'order_id',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(ProductModel::class, 'product_id');
+    }
     use HasFactory;
 }
