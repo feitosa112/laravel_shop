@@ -45,7 +45,7 @@ class OrderController extends Controller
 
     public function getMyOrder(){
         $id = Auth::user()->id;
-        $orders = OrderModel::with('orderItems')->where('user_id',$id)->get();
+        $orders = OrderModel::with('orderItems')->where('user_id',$id)->orderBy('created_at','DESC')->get();
         return view('myOrder',compact('orders'));
     }
 }

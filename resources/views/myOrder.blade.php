@@ -20,7 +20,7 @@ My order
         <th scope="col">Order {{$index+1}}</th>
         <th scope="col">Product name</th>
         <th scope="col">Price</th>
-        <th scope="col">Status</th>
+        <th style="color:{{$order->status === 'ordered' ? 'white' : 'greenyellow'}}" scope="col">{{$order->status}}</th>
         <th scope="col">Created at</th>
       </tr>
     </thead>
@@ -30,7 +30,7 @@ My order
         <th scope="row"></th>
         <td>{{$item->product->product_name}}</td>
         <td>{{$item->product->price}}</td>
-        <td>{{$order->status}}</td>
+        <td></td>
         <td>{{$item->created_at}}</td>
     </tr>
     @endforeach

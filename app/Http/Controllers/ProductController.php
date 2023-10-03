@@ -20,8 +20,8 @@ class ProductController extends Controller
 
         $results = $this->productRepo->getProductWithCategory($id);
         
-        if($results == null){
-            return redirect()->back()->with('error','Odabrana kategorija nije pronadjena');
+        if(count($results) === 0){
+            return redirect()->back()->with('error','Nema rezultata pretrage');
         }else{
             return view('thisCategory',compact('results'));
         }
@@ -29,8 +29,12 @@ class ProductController extends Controller
 
     public function thisSubCategory($id){
         $results = $this->productRepo->getProductWithSubcategory($id);
+        if(count($results) === 0){
+            return redirect()->back()->with('error','Nema rezultata pretrage');
+        }else{
+            return view('thisSubCategory',compact('results'));
 
-        return view('thisSubCategory',compact('results'));
+        }
     }
 
     public function getThisProduct($id){

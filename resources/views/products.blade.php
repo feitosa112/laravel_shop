@@ -1,7 +1,8 @@
 <div class="row">
+        
     @foreach ($results as $result)
     <a href="{{route('thisProduct',['id'=>$result->id])}}">
-        <div class="col-2 offset-1">
+        <div class="col-3 m-5" style="border:1px dotted #a7b2c2">
             <img src="/image/{{$result->product_image}}" style="width: 150px;height:100px" alt="">
             <p><b>{{$result->product_name}}</b></p>
             <a href="" class="btn btn-success btn-sm float-left">{{$result->price}} KM</a>
