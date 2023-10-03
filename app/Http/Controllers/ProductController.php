@@ -18,24 +18,24 @@ class ProductController extends Controller
     
     public function thisCategory($id){
 
-        $category = $this->productRepo->getProductWithCategory($id);
+        $results = $this->productRepo->getProductWithCategory($id);
         
-        if($category == null){
+        if($results == null){
             return redirect()->back()->with('error','Odabrana kategorija nije pronadjena');
         }else{
-            return view('thisCategory',compact('category'));
+            return view('thisCategory',compact('results'));
         }
     }
 
     public function thisSubCategory($id){
-        $subcategory = $this->productRepo->getProductWithSubcategory($id);
+        $results = $this->productRepo->getProductWithSubcategory($id);
 
-        return view('thisSubCategory',compact('subcategory'));
+        return view('thisSubCategory',compact('results'));
     }
 
     public function getThisProduct($id){
-        $product = $this->productRepo->getProductWithId($id);
-        return view('thisProduct',compact('product'));
+        $results = $this->productRepo->getProductWithId($id);
+        return view('thisProduct',compact('results'));
     }
 
     public function addToCart($id){
