@@ -53,6 +53,8 @@ Route::controller(ProductController::class)->group(function(){
 
     Route::get('/delete/{id}','deleteFromCart')->name('deleteFromCart');
 
+    Route::get('/search','search')->name('search');
+
 });
 
 Route::get('/order',[OrderController::class,'orderExecute'])->name('orderExecute');

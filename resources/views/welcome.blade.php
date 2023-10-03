@@ -8,9 +8,15 @@ Welcome page
 
  <div class="row">
     <div class="col-9 offset-1">
-        <form action="">
-            <input type="text" placeholder="Search" name="search" class="form-control">
+        <form action="{{route('search')}}">
+            <div class="input-group mb-3">
+                <input type="text" placeholder="Search" name="search" class="form-control">
+                <div class="input-group-append">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
         </form>
+
     </div>
  </div>
  <div class="row" style="margin-left: 15px">

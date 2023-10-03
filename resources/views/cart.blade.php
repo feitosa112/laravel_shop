@@ -10,7 +10,7 @@ Cart
 @foreach ($cart as $item)
 <div class="row">
     <div class="col-2 offset-2">
-        <div class="card" style="width:250px;border:1px dotted gray">
+        <div class="card" style="width:200px;height:300px;border:1px dotted gray">
             <div class="card-header">
                 <img src="/image/{{$item->product_image}}" style="width:100%;height:100%" alt="">
             </div>
@@ -31,7 +31,7 @@ Cart
     <div class="row" style="border:1px dotted black">
         <div class="col-6 offset-3">
             @if (count($cart) === 0)
-                <h4>Vasa korpa je prazna</h4> 
+                <h4 class="display-4 text-center">Vasa korpa je prazna</h4> 
                 
             
                 
