@@ -27,7 +27,7 @@ class OrderRepository {
         
          return $this->orderModel->create([
             'user_id'=>$user->id,
-            'status'=>'ordered',
+            'status'=>'Naruceno',
             'total_amount'=>$total,
             'shipping_address' => $user->email
         ]);

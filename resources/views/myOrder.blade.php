@@ -20,7 +20,7 @@ My order
         <th scope="col">Order {{$index+1}}</th>
         <th scope="col">Product name</th>
         <th scope="col">Price</th>
-        <th style="color:{{$order->status === 'ordered' ? 'white' : 'greenyellow'}}" scope="col">{{$order->status}}</th>
+        <th style="color:{{$order->status === 'Naruceno' ? 'red' : 'greenyellow'}}" scope="col">{{$order->status}}</th>
         <th scope="col">Created at</th>
       </tr>
     </thead>

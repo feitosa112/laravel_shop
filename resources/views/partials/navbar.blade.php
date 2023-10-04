@@ -26,10 +26,18 @@
             @endif
         @else
             @if (Auth::user() && Auth::user()->email === 'admin@gmail.com')
-            <a href="{{route('newOrder')}}" class="nav-link" style="color:{{App\Models\OrderModel::where('status','ordered')->exists() ? 'red' : 'black'}}">New Order</a>
+            @if (App\Models\OrderModel::where('status','Naruceno')->exists())
+                <a href="{{route('newOrder')}}"class="nav-link" style="color:red">You have new order</a>
+                @else
+                <a href="{{route('newOrder')}}"class="nav-link">All order</a>
+
             @endif
-            <a href="{{route('cartView')}}" class="nav-link">Cart({{count(Session::get('cart',[]))}})</a>
+            @endif
+            @if (Auth::user()->email !== 'admin@gmail.com')
+            <a href="{{route('cartView')}}" class="nav-link">Cart({{count(Session::get('cart',[]))}})</a> 
             <a href="{{route('myOrder')}}" class="nav-link">My order</a>
+
+            @endif
                 
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

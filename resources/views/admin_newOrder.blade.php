@@ -38,7 +38,7 @@ NewOrder
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$newOrder->id}}</td>
-                                <td><a href="" class="badge badge-warning">Wiew</a></td>
+                                <td><a href="{{route('newOrderView',['id'=>$newOrder->id])}}" class="badge badge-warning">Wiew</a></td>
                             </tr>
                  
                     @endforeach
@@ -73,7 +73,7 @@ NewOrder
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$item->id}}</td>
-                        <td><a href="" class="badge badge-warning">Wiew</a></td>
+                        <td><a href="{{route('newOrderView',['id'=>$item->id])}}" class="badge badge-warning">Wiew</a></td>
                     </tr>
                     @endforeach
                 </tbody>

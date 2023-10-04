@@ -51,7 +51,19 @@ class OrderController extends Controller
 
     public function newOrder(){
         $allOrders = OrderModel::with('orderItems')->get();
-        $newOrders = OrderModel::with('orderItems')->where('status','ordered')->get();
+        $newOrders = OrderModel::with('orderItems')->where('status','Naruceno')->get();
         return view('admin_newOrder',compact('newOrders','allOrders'));
+    }
+
+    public function newOrderView($id){
+        $order = OrderModel::with('orderItems')->where('id',$id)->get();
+        return view('newOrderView',compact('order'));
+    }
+
+    public function sendProduct($id){
+        $order = OrderModel::find($id);
+        $order->status = 'Poslano';
+        $order->save();
+        return redirect(route('home'))->with('isSend','Procesuirali ste narudzbu');
     }
 }
