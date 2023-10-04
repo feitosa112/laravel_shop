@@ -25,6 +25,9 @@
                 </li>
             @endif
         @else
+            @if (Auth::user() && Auth::user()->email === 'admin@gmail.com')
+            <a href="{{route('newOrder')}}" class="nav-link" style="color:{{App\Models\OrderModel::where('status','ordered')->exists() ? 'red' : 'black'}}">New Order</a>
+            @endif
             <a href="{{route('cartView')}}" class="nav-link">Cart({{count(Session::get('cart',[]))}})</a>
             <a href="{{route('myOrder')}}" class="nav-link">My order</a>
                 

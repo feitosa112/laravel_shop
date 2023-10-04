@@ -59,3 +59,4 @@ Route::controller(ProductController::class)->group(function(){
 
 Route::get('/order',[OrderController::class,'orderExecute'])->name('orderExecute');
 Route::get('/my-order',[OrderController::class,'getMyOrder'])->name('myOrder');
+Route::get('/admin-newOrder',[OrderController::class,'newOrder'])->name('newOrder');

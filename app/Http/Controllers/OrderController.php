@@ -48,4 +48,10 @@ class OrderController extends Controller
         $orders = OrderModel::with('orderItems')->where('user_id',$id)->orderBy('created_at','DESC')->get();
         return view('myOrder',compact('orders'));
     }
+
+    public function newOrder(){
+        $allOrders = OrderModel::with('orderItems')->get();
+        $newOrders = OrderModel::with('orderItems')->where('status','ordered')->get();
+        return view('admin_newOrder',compact('newOrders','allOrders'));
+    }
 }

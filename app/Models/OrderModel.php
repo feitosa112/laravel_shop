@@ -20,5 +20,9 @@ class OrderModel extends Model
 {
     return $this->hasMany(OrderItemModel::class,'order_id');
 }
+
+    public function userOrder(){
+        return $this->hasMany(User::class,'id','user_id');
+    }
     use HasFactory;
 }

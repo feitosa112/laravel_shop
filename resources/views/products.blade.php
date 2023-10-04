@@ -6,7 +6,7 @@
             <img src="/image/{{$result->product_image}}" style="width: 150px;height:100px" alt="">
             <p><b>{{$result->product_name}}</b></p>
             <a href="" class="btn btn-success btn-sm float-left">{{$result->price}} KM</a>
-            @if (Auth::user())
+            @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
                 
                 @if (in_array($result->id,array_column(Session::get('cart',[]),'id')))
                     <a href="" class="btn btn-secondary btn-sm float-right">Proizvod je u korpi</a>
