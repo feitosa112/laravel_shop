@@ -55,6 +55,14 @@ Route::controller(ProductController::class)->group(function(){
 
     Route::get('/search','search')->name('search');
 
+    Route::get('/delete-product/{id}','deleteProduct')->name('deleteProduct');
+
+    Route::get('/edit-product-view/{id}','editProductView')->name('editProductView');
+
+    Route::post('/update/{id}','updateProduct')->name('update');
+
+    Route::get('/delete-image/{id}','deleteImage')->name('deleteImage');
+
 });
 
 Route::get('/order',[OrderController::class,'orderExecute'])->name('orderExecute');
@@ -62,3 +70,6 @@ Route::get('/my-order',[OrderController::class,'getMyOrder'])->name('myOrder');
 Route::get('/admin/newOrder',[OrderController::class,'newOrder'])->name('newOrder');
 Route::get('/admin/newOrder-view/{id}',[OrderController::class,'newOrderView'])->name('newOrderView');
 Route::get('/send-product/{id}',[OrderController::class,'sendProduct'])->name('send-product');
+
+
+

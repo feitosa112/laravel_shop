@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProductImaheToProduct extends Migration
+class ChangeProductImageColumnInProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddProductImaheToProduct extends Migration
     public function up()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->string('product_image');
+            $table->string('product_image')->nullable()->change();
         });
     }
 

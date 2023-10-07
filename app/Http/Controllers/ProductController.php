@@ -92,4 +92,58 @@ class ProductController extends Controller
 
         }
     }
+
+
+    public function deleteProduct($id){
+        $product = ProductModel::find($id);
+        $product->delete();
+
+        return redirect()->back()->with('deleteProduct','Uspjesno ste obrisali proizvod');
+    }
+
+    public function editProductView($id){
+        $product = ProductModel::find($id);
+
+        return view('editProductView',compact('product'));
+
+    }
+
+    public function updateProduct(Request $request,$id){
+        // dd($request->file('newImg'));
+
+        
+        $request->validate([
+            'product_name' => 'required|string',
+            'price' => 'required|integer',
+            // 'product_image' => 'mimes:jpg,jpeg,png'
+        ]);
+
+        $product = ProductModel::findOrFail($id);
+
+        $product->product_name = $request->input('product_name');
+        $product->price = $request->input('price');
+        
+        
+
+        if($request->hasFile('newImg')){
+            $product_image = $request->file('newImg');
+            $imgName = time().'1.'.$product_image->extension();
+            $product_image->move(public_path('image'),$imgName);
+            $product->product_image = $imgName;
+        }else{
+            $product->product_image = $request->input('product_image');
+        }
+
+        $product->save();
+
+        return redirect()->back()->with('updateProduct','Uspjesno ste sacuvali izmjene');
+    }
+
+    public function deleteImage($id){
+        $product = ProductModel::find($id);
+        $product->product_image = '';
+        $product->save();
+        return redirect()->back()->with('deleteImage','Uspjesno ste obrisali sliku');
+
+    }
 }

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\OrderExecuteRequest;
 use App\Models\OrderItemModel;
 use App\Models\OrderModel;
-use App\Models\ProductModel;
 use App\Repositories\OrderRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 

@@ -1,3 +1,5 @@
+
+
 <div class="row">
         
     @foreach ($results as $result)
@@ -15,8 +17,14 @@
 
                 @endif
                 @endif
+                @if (Auth::user() && Auth::user()->email === 'admin@gmail.com')
+                    <a href="{{route('deleteProduct',['id'=>$result->id])}}" class="btn btn-danger btn-sm float-right">Delete</a>
+                    <a href="{{route('editProductView',['id'=>$result->id])}}" class="btn btn-warning btn-sm float-right">Edit</a>
+                @endif
         </div>
     </a>
         
     @endforeach     
 </div>
+
+

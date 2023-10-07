@@ -61,3 +61,30 @@
    
 @endif
 
+@if ($message = Session::get('deleteProduct'))
+<div class="col-4 offset-8">
+    <div class="alert alert-danger" role="alert">
+        {{$message}}
+      </div>
+</div>
+   
+@endif
+
+@if ($message = Session::get('updateProduct'))
+<div class="col-4 offset-8">
+    <div class="alert alert-warning" role="alert">
+        {{$message}}
+      </div>
+</div>
+   
+@endif
+
+@if ($message = Session::get('deleteImage'))
+<div class="col-4 offset-8">
+    <div class="alert alert-warning" role="alert">
+        {{$message}}
+      </div>
+</div>
+   
+@endif
+

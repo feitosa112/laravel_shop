@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories=CategoryModel::take(14)->get();
+        $categories=CategoryModel::take(10)->get();
         return view('welcome',['categories'=>$categories]);
     }
 }
