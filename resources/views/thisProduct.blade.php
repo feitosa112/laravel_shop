@@ -6,7 +6,7 @@ This product
 @endsection
 
 @section('content')
-@include('products')
 
-    
+@include('products')
+ 
 @endsection

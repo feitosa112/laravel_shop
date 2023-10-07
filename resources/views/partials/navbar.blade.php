@@ -26,7 +26,7 @@
             @endif
         @else
             @if (Auth::user() && Auth::user()->email === 'admin@gmail.com')
-            <a href="" class="nav-link">Dodaj novi proizvod</a>
+            <a href="{{route('addNewProduct')}}" class="nav-link">Dodaj novi proizvod</a>
             @if (App\Models\OrderModel::where('status','Naruceno')->exists())
                 <a href="{{route('newOrder')}}"class="nav-link" style="color:red">You have new order</a>
                 @else

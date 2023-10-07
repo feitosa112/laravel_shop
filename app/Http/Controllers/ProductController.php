@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryModel;
 use App\Models\ProductModel;
+use App\Models\SubcategoryModel;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -102,9 +104,10 @@ class ProductController extends Controller
     }
 
     public function editProductView($id){
-        $product = ProductModel::find($id);
-
-        return view('editProductView',compact('product'));
+        $product = ProductModel::with('productCat')->find($id);
+        $categories = CategoryModel::all();
+        $subcategories = SubcategoryModel::where('category_id',$product->category_id)->get();
+        return view('editProductView',compact('product','categories','subcategories'));
 
     }
 
@@ -115,6 +118,8 @@ class ProductController extends Controller
         $request->validate([
             'product_name' => 'required|string',
             'price' => 'required|integer',
+            // 'category_id'=>'required|integer',
+            'subcategory'=>'required|integer'
             // 'product_image' => 'mimes:jpg,jpeg,png'
         ]);
 
@@ -122,7 +127,8 @@ class ProductController extends Controller
 
         $product->product_name = $request->input('product_name');
         $product->price = $request->input('price');
-        
+        $product->category_id = $request->input('category');
+        $product->subcategory_id = $request->subcategory;
         
 
         if($request->hasFile('newImg')){
@@ -146,4 +152,38 @@ class ProductController extends Controller
         return redirect()->back()->with('deleteImage','Uspjesno ste obrisali sliku');
 
     }
+
+    public function addNewProductView(){
+        $categories = CategoryModel::all();
+        return view('addNewProduct_view',compact('categories'));
+    }
+
+    public function addNewProduct(Request $request){
+        $request->validate([
+            'product_name'=>'required|string',
+            'price'=>'required|integer',
+            'category'=>'required|integer',
+            'product_image'=>'mimes:jpg,jpeg,png'
+        ]);
+        if($request->hasFile('image')){
+            $product_image = $request->file('image');
+            $imgName = time().'1.'.$product_image->extension();
+            $product_image->move(public_path('image'),$imgName);
+             
+        }else{
+            $product_image = '';
+        }
+
+        ProductModel::create([
+            'product_name'=>$request->input('product_name'),
+            'price'=>$request->input('price'),
+            'category_id'=>$request->category,
+            'product_image'=>(isset($product_image)) ? $imgName : null,
+            'product_image2' =>(isset($product_image2)) ? $imgName : null,
+        ]);
+
+        return redirect()->route('home')->with('addNewProduct','Uspjesno ste dodali novi proizvod');
+    }
+
+    
 }

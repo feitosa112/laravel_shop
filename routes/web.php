@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Models\CategoryModel;
+use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $categories=CategoryModel::take(14)->get();
-    return view('welcome',['categories'=>$categories]);
+    $results = ProductModel::all();
+    return view('welcome',['categories'=>$categories,'results'=>$results]);
 });
 
 Auth::routes();
@@ -62,6 +64,10 @@ Route::controller(ProductController::class)->group(function(){
     Route::post('/update/{id}','updateProduct')->name('update');
 
     Route::get('/delete-image/{id}','deleteImage')->name('deleteImage');
+
+    Route::get('add-new-product','addNewProductView')->name('addNewProduct');
+
+    Route::post('/add-new-product','addNewProduct')->name('addNewProduct');
 
 });
 

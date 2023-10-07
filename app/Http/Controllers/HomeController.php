@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\ProductModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories=CategoryModel::take(10)->get();
-        return view('welcome',['categories'=>$categories]);
+        $results = ProductModel::all();
+        return view('welcome',['categories'=>$categories,'results'=>$results]);
     }
 }

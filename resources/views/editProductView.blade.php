@@ -30,6 +30,23 @@ Edit product view
                 <label for="product_name"><p><b>Naziv proizvoda:</b></p></label>
                 <input type="text" name="product_name" class="form-control" value="{{$product->product_name}}"><br>
                 
+                <label for="category">Odaberi kategoriju</label>
+                <select name="category" id="" class="form-control">
+               
+                 @foreach ($categories as $category)
+                 <option value="{{$category->id}}">{{$category->category_name}}</option>
+                     
+                 @endforeach   
+               
+                </select><br>
+
+                <label for="subcategory">Odaberi podkategoriju</label><br>
+                <select name="subcategory" class="form-control" id="">
+                    @foreach ($subcategories as $subcategory)
+                    <option value="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</option>
+                    @endforeach
+                </select>
+                    
                 <label for="price"><p><b>Cijena:</b></p></label>
                 <input type="number" class="form-control" name="price" value="{{$product->price}}"><br>
                 
