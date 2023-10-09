@@ -1,4 +1,4 @@
-<body>
+<body style="background-color: #e9e9e9">
     <div id="app">
        @include('partials.navbar')
        @include('flash-message')

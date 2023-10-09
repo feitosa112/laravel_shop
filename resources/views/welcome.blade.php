@@ -7,7 +7,7 @@ Welcome page
 @section('content')
 
  <div class="row">
-    <div class="col-9 offset-1">
+    <div class="col-6 offset-3">
         <form action="{{route('search')}}">
             <div class="input-group mb-3">
                 <input type="text" placeholder="Search" name="search" class="form-control">
@@ -41,7 +41,7 @@ Welcome page
                         <div class="card">
                             <div class="card-header">
                                 @if ($result->product_image != null)
-                                <img src="/image/{{$result->product_image}}" alt="">
+                                <img src="/image/{{$result->product_image}}" style="width: 100%;height:80%;" alt="Nema slike">
                                     
                                 @endif
                             </div>
