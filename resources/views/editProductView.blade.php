@@ -32,7 +32,13 @@ Edit product view
                 
                 <label for="category">Odaberi kategoriju</label>
                 <select name="category" id="" class="form-control">
-               
+                  
+
+                <option value="{{$product->category_id}}">
+                    @foreach ($product->productCat as $item)
+                        {{$item->category_name}}
+                    @endforeach
+                </option>
                  @foreach ($categories as $category)
                  <option value="{{$category->id}}">{{$category->category_name}}</option>
                      
