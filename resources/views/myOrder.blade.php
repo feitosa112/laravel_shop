@@ -22,6 +22,7 @@ My order
         <th scope="col">Price</th>
         <th style="color:{{$order->status === 'Naruceno' ? 'red' : 'greenyellow'}}" scope="col">{{$order->status}}</th>
         <th scope="col">Created at</th>
+
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,7 @@ My order
         <td>{{$item->product->price}}</td>
         <td></td>
         <td>{{$item->created_at}}</td>
+s
     </tr>
     @endforeach
     </tbody>  

@@ -163,6 +163,7 @@ class ProductController extends Controller
             'product_name'=>'required|string',
             'price'=>'required|integer',
             'category'=>'required|integer',
+            'description'=>'required|string|min:5',
             'product_image'=>'mimes:jpg,jpeg,png'
         ]);
         if($request->hasFile('image')){
@@ -174,12 +175,63 @@ class ProductController extends Controller
             $product_image = '';
         }
 
+        if($request->hasFile('image2')){
+            $product_image = $request->file('image2');
+            $imgName2 = time().'2.'.$product_image->extension();
+            $product_image->move(public_path('image2'),$imgName2);
+             
+        }else{
+            $product_image = '';
+        }
+
+        if($request->hasFile('image3')){
+            $product_image = $request->file('image3');
+            $imgName3 = time().'3.'.$product_image->extension();
+            $product_image->move(public_path('image3'),$imgName3);
+             
+        }else{
+            $product_image = '';
+        }
+
+        if($request->hasFile('image4')){
+            $product_image = $request->file('image4');
+            $imgName4 = time().'4.'.$product_image->extension();
+            $product_image->move(public_path('image4'),$imgName4);
+             
+        }else{
+            $product_image = '';
+        }
+
+        if($request->hasFile('image5')){
+            $product_image = $request->file('image5');
+            $imgName5 = time().'5.'.$product_image->extension();
+            $product_image->move(public_path('image5'),$imgName5);
+             
+        }else{
+            $product_image = '';
+        }
+
+        if($request->hasFile('image6')){
+            $product_image = $request->file('image6');
+            $imgName6 = time().'6.'.$product_image->extension();
+            $product_image->move(public_path('image6'),$imgName6);
+             
+        }else{
+            $product_image = '';
+        }
+
         ProductModel::create([
             'product_name'=>$request->input('product_name'),
             'price'=>$request->input('price'),
             'category_id'=>$request->category,
             'product_image'=>(isset($product_image)) ? $imgName : null,
-            'product_image2' =>(isset($product_image2)) ? $imgName : null,
+            'product_image2' =>(isset($product_image2)) ? $imgName2 : null,
+            'product_image3' =>(isset($product_image3)) ? $imgName3 : null,
+            'product_image4' =>(isset($product_image4)) ? $imgName4 : null,
+            'product_image5' =>(isset($product_image5)) ? $imgName5 : null,
+            'product_image6' =>(isset($product_image6)) ? $imgName6 : null,
+
+
         ]);
 
         return redirect()->route('home')->with('addNewProduct','Uspjesno ste dodali novi proizvod');

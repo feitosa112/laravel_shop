@@ -12,7 +12,7 @@ Welcome page
             <div class="input-group mb-3">
                 <input type="text" placeholder="Search" name="search" class="form-control">
                 <div class="input-group-append">
-                    <button class="btn btn-primary">Search</button>
+                    <button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
                 </div>
             </div>
         </form>
@@ -68,7 +68,7 @@ Welcome page
                                     
                                 @endif
                             </div>
-                        </div>
+                        </div><br>
                     </a>
                     
                 </div>

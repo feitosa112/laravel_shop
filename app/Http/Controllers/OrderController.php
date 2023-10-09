@@ -63,4 +63,6 @@ class OrderController extends Controller
         $order->save();
         return redirect(route('home'))->with('isSend','Procesuirali ste narudzbu');
     }
+
+  
 }
