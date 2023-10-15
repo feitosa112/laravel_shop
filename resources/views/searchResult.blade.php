@@ -7,6 +7,7 @@ Search result
 @section('content')
 {{-- @dd(count($results)) --}}
 
+
 @include('products')
     
 @endsection

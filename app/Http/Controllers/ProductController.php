@@ -41,6 +41,7 @@ class ProductController extends Controller
 
     public function getThisProduct($id){
         $results = $this->productRepo->getProductWithId($id);
+        
         return view('thisProduct',compact('results'));
     }
 

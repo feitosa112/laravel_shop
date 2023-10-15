@@ -18,9 +18,9 @@
                     @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
                         
                         @if (in_array($result->id,array_column(Session::get('cart',[]),'id')))
-                            <a href="" class="btn btn-secondary btn-sm float-right">Proizvod je u korpi</a>
+                            <a href="" class="badge badge-secondary btn-sm float-right">Proizvod je u korpi</a>
                             @else
-                            <a href="{{route('addToCart',['id'=>$result->id])}}" class="btn btn-warning btn-sm float-right">Dodaj u korpu</a>
+                            <a href="{{route('addToCart',['id'=>$result->id])}}" class="badge badge-warning btn-sm float-right">Dodaj u korpu</a>
         
                         @endif
                         @endif
