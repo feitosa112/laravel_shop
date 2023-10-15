@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\ProductModel;
+use Illuminate\Support\Facades\Auth;
 
 class ProductRepository {
     private $productModel;
@@ -19,6 +20,9 @@ class ProductRepository {
     }
 
     public function getProductWithId($id){
+        if(Auth::user() && Auth::user()->email !== 'admin@gmail.com' || !Auth::user()){
+            $this->productModel->where(['id'=>$id])->increment('views');
+        }
         return $this->productModel->where(['id'=>$id])->get();
     }
 }

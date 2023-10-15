@@ -67,8 +67,11 @@ Welcome page
                                 <a href="{{route('deleteProduct',['id'=>$result->id])}}" class="badge badge-danger badge-sm float-right">Delete</a>                           
                                     
                                 @endif
-                            </div>
+                            </div><br>
+                        <p class="float-left"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
+
                         </div><br>
+                        
                     </a>
                     
                 </div>

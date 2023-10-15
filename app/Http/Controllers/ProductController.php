@@ -53,7 +53,9 @@ class ProductController extends Controller
             
     
             return redirect()->back()->with('success', 'Proizvod je dodat u korpu.');
-        }else{
+        }
+        else
+        {
             return redirect()->back()->with('amount', 'Proizvoda nema trenutno na stanju');
         }
         
