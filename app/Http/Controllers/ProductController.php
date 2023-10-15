@@ -46,12 +46,17 @@ class ProductController extends Controller
 
     public function addToCart($id){
         $product = ProductModel::find($id);
-        $cart = Session::get('cart',[]);
-        $cart[$id] = $product;
-        Session::put('cart',$cart);
+        if($product->amount > 0){
+            $cart = Session::get('cart',[]);
+            $cart[$id] = $product;
+            Session::put('cart',$cart);
+            
+    
+            return redirect()->back()->with('success', 'Proizvod je dodat u korpu.');
+        }else{
+            return redirect()->back()->with('amount', 'Proizvoda nema trenutno na stanju');
+        }
         
-
-        return redirect()->back()->with('success', 'Proizvod je dodat u korpu.');
     }
 
     public function cartView(){

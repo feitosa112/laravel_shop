@@ -106,3 +106,12 @@
    
 @endif
 
+@if ($message = Session::get('amount'))
+<div class="col-4 offset-8">
+    <div class="alert alert-danger" role="alert">
+        {{$message}}
+      </div>
+</div>
+   
+@endif
+

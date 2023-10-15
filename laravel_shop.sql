@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 15, 2023 at 09:03 AM
+-- Generation Time: Oct 15, 2023 at 12:36 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -102,7 +102,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2023_10_01_173005_create_order_items_table', 7),
 (13, '2023_10_07_075941_change_price_column_type_in_product_table', 8),
 (14, '2023_10_07_080308_change_product_image_column_in_product_table', 8),
-(16, '2023_10_07_170627_add_image2_to_product', 9);
+(16, '2023_10_07_170627_add_image2_to_product', 9),
+(17, '2023_10_15_123043_add_amount_to_product', 10);
 
 -- --------------------------------------------------------
 
@@ -214,6 +215,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `product_image5` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `product_image6` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci,
+  `amount` int NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`),
   KEY `product_category_id_foreign` (`category_id`),
   KEY `product_subcategory_id_foreign` (`subcategory_id`)
@@ -223,12 +225,12 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `product_name`, `product_image`, `price`, `category_id`, `subcategory_id`, `created_at`, `updated_at`, `product_image2`, `product_image3`, `product_image4`, `product_image5`, `product_image6`, `description`) VALUES
-(4, 'Retrovizor za toyotu', '16968652751.jpg', 56, 2, 1, NULL, '2023-10-09 13:28:21', '', '', '', '', '', NULL),
-(7, 'Puska za lov', '16968384731.jpg', 12, 3, NULL, '2023-10-09 06:01:13', '2023-10-09 06:01:13', NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'pumpa za bazen', '16968392301.jpg', 175, 30, 5, '2023-10-09 06:13:50', '2023-10-09 16:02:01', NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Samsung galaxy s4', '16968721111.jpg', 500, 31, 7, '2023-10-09 15:21:51', '2023-10-09 16:05:03', NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'Kosarkaska lopta', '16968741141.jpg', 55, 30, 6, '2023-10-09 15:55:14', '2023-10-09 16:01:47', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `product` (`id`, `product_name`, `product_image`, `price`, `category_id`, `subcategory_id`, `created_at`, `updated_at`, `product_image2`, `product_image3`, `product_image4`, `product_image5`, `product_image6`, `description`, `amount`) VALUES
+(4, 'Retrovizor za toyotu', '16968652751.jpg', 56, 2, 1, NULL, '2023-10-09 13:28:21', '', '', '', '', '', NULL, 10),
+(7, 'Puska za lov', '16968384731.jpg', 12, 3, NULL, '2023-10-09 06:01:13', '2023-10-09 06:01:13', NULL, NULL, NULL, NULL, NULL, NULL, 10),
+(8, 'pumpa za bazen', '16968392301.jpg', 175, 30, 5, '2023-10-09 06:13:50', '2023-10-09 16:02:01', NULL, NULL, NULL, NULL, NULL, NULL, 10),
+(9, 'Samsung galaxy s4', '16968721111.jpg', 500, 31, 7, '2023-10-09 15:21:51', '2023-10-09 16:05:03', NULL, NULL, NULL, NULL, NULL, NULL, 10),
+(10, 'Kosarkaska lopta', '16968741141.jpg', 55, 30, 6, '2023-10-09 15:55:14', '2023-10-09 16:01:47', NULL, NULL, NULL, NULL, NULL, NULL, 10);
 
 -- --------------------------------------------------------
 
