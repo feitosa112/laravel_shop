@@ -33,7 +33,7 @@ My order
         <td>{{$item->product->price}}</td>
         <td></td>
         <td>{{$item->created_at}}</td>
-s
+
     </tr>
     @endforeach
     </tbody>  

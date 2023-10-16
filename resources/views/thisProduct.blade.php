@@ -10,7 +10,7 @@ This product
 
 @foreach ($results as $result)
 
-<div class="col-5 offset-3 mt-5 text-center" style="border:1px dotted #a7b2c2">
+<div class="col-8 col-sm-5 offset-3 mt-5 text-center" style="border:1px dotted #a7b2c2">
     <img src="/image/{{$result->product_image}}" style="width: 250px;height:200px" alt=""><br>
     @if ($result->product_image2 != null)
     <img src="/image/{{$result->product_image2}}" style="width: 150px;height:100px" alt=""><br>

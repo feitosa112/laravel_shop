@@ -6,39 +6,43 @@ Welcome page
 @endsection
 @section('content')
 
- <div class="row">
-    <div class="col-6 offset-3">
-        <form action="{{route('search')}}">
-            <div class="input-group mb-3">
-                <input type="text" placeholder="Search" name="search" class="form-control">
-                <div class="input-group-append">
-                    <button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+ <div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form action="{{route('search')}}">
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Search" name="search" class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    </div>
                 </div>
-            </div>
-        </form>
-
-    </div>
- </div>
- <div class="row" style="margin-left: 15px">
-    @foreach ($categories as $cat)
-        <div class="cont" style=";display:flex;flex-direction:column;margin:0 auto;text-align:center;margin-top:5px">
-            <a href="{{route('thisCategory',['id'=>$cat->id])}}" style="text-decoration: none;color:black">
-                <img src="image/{{$cat->image}}" style="border-radius: 50%;width:50px;height:50px;" alt="">
-                <p style="font-size: 10px">{{$cat->category_name}}</p>    
-            </a>
+            </form>
+    
         </div>
+     </div>
+     <div class="row" style="margin-left: 15px">
+        @foreach ($categories as $cat)
+            <div class="col-1 m-2">
+                <a href="{{route('thisCategory',['id'=>$cat->id])}}" style="text-decoration: none;color:black">
+                    <img src="image/{{$cat->image}}" class="img-fluid" id="slicice"  style="border-radius: 50%;width:50px;height:50px;" alt="">
+                    <p style="font-size: 10px">{{$cat->category_name}}</p>    
+                </a>
+            </div>
+                
+                
             
-            
-        
-    @endforeach
- </div><br>
+        @endforeach
+     </div>    
+</div>
+<br>
 
         <div class="container">
             <div class="row">
                 @foreach ($results as $result)
-                <div class="col-3 offset-1">
+                
+                <div class="col-5 col-sm-3 offset-1">
                     <a href="{{route('thisProduct',['id'=>$result->id])}}" style="text-decoration: none;color:black">
-                        <div class="card">
+                        <div class="card" style="border-radius: 5%;box-shadow:0px 0px 5px rgba(0,0,0,0.5)">
                             <div class="card-header">
                                 @if ($result->product_image != null)
                                 <img src="/image/{{$result->product_image}}" style="width: 100%;height:80%;" alt="Nema slike">
@@ -47,7 +51,7 @@ Welcome page
                             </div>
     
                             <div class="card-body">
-                                <h5>{{$result->product_name}}</h5>
+                                <h5 class="text-center">{{$result->product_name}}</h5>
                             </div>
     
                             <div class="card-footer">

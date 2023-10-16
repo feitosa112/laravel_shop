@@ -4,13 +4,13 @@
         
             @foreach ($results as $result)
             <a href="{{route('thisProduct',['id'=>$result->id])}}">
-                <div class="col-3 m-5 text-center" style="border:1px dotted #a7b2c2">
-                    <img src="/image/{{$result->product_image}}" style="width: 250px;height:200px" alt=""><br>
+                <div class="col-12 col-sm-3 m-5 text-center" style="border:1px dotted #a7b2c2">
+                    <img src="/image/{{$result->product_image}}" class="img-fluid" style="width: 250px;height:200px" alt=""><br>
                     @if ($result->product_image2 != null)
-                    <img src="/image/{{$result->product_image2}}" style="width: 150px;height:100px" alt=""><br>
+                    <img src="/image/{{$result->product_image2}}" class="img-fluid" style="width: 150px;height:100px" alt=""><br>
                     @endif
                     @if ($result->product_image3 != null)
-                    <img src="/image/{{$result->product_image3}}" style="width: 150px;height:100px" alt=""><br>
+                    <img src="/image/{{$result->product_image3}}" class="img-fluid" style="width: 150px;height:100px" alt=""><br>
                     @endif
 
                     <p><b>{{$result->product_name}}</b></p>
