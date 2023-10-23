@@ -37,7 +37,10 @@ This product
 
         <br><br>
         <p class="float-left"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
-
+        @foreach ($messages as $msg)
+        <p class="float-start">{{$msg->user->name}}:{{$msg->message}} <p class="float-end"><sub>{{$msg->created_at}}</sub></p></p><br><br>
+            
+        @endforeach
         @if ($errors->any())
         @foreach($errors->all() as $error)
 
@@ -45,11 +48,14 @@ This product
 
         @endforeach
         @endif
+        @if (Auth::user() && Auth::user()->email != 'admin@gmail.com')
         <form action="{{route('sendMsg',['id'=>$result->id])}}" method="POST">
             @csrf
             <textarea name="msg" placeholder="Posalji poruku u vezi ovog proizvoda" class="form-control" style="box-shadow:0px 0px 5px rgba(0,0,0,0.5)"></textarea>
             <button class="btn btn-primary form-control">Posalji poruku</button>
         </form>
+        @endif
+        
 </div>
     
 @endforeach

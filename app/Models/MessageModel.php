@@ -15,5 +15,9 @@ class MessageModel extends Model
         'created_at',
         'product_id'
     ];
+
+    public function user(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
     use HasFactory;
 }
