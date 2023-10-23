@@ -34,8 +34,22 @@ This product
             <a href="{{route('deleteProduct',['id'=>$result->id])}}" class="btn btn-danger btn-sm float-right text-decoration-none">Delete</a>
             <a href="{{route('editProductView',['id'=>$result->id])}}" class="btn btn-warning btn-sm float-right text-decoration-none">Edit</a>
         @endif
+
         <br><br>
         <p class="float-left"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
+
+        @if ($errors->any())
+        @foreach($errors->all() as $error)
+
+        <p style="color: red">{{$error}}</p>
+
+        @endforeach
+        @endif
+        <form action="{{route('sendMsg',['id'=>$result->id])}}" method="POST">
+            @csrf
+            <textarea name="msg" placeholder="Posalji poruku u vezi ovog proizvoda" class="form-control" style="box-shadow:0px 0px 5px rgba(0,0,0,0.5)"></textarea>
+            <button class="btn btn-primary form-control">Posalji poruku</button>
+        </form>
 </div>
     
 @endforeach
