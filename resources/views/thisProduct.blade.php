@@ -38,7 +38,12 @@ This product
         <br><br>
         <p class="float-left"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
         @foreach ($messages as $msg)
-        <p class="float-start">{{$msg->user->name}}:{{$msg->message}} <p class="float-end"><sub>{{$msg->created_at}}</sub></p></p><br><br>
+        <div class="alert alert-success" role="alert">
+            <a href="" class="badge bg-primary text-decoration-none float-start">{{$msg->user->name}}</a><br>
+            <p class="float-start" style="margin-top: -5px">{{$msg->message}}</p>
+            <sub class="float-end">{{$msg->created_at}}</sub>
+          </div><br>
+        
             
         @endforeach
         @if ($errors->any())
