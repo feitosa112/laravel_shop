@@ -12,20 +12,20 @@ New Order by id
         <div class="col-6 offset-3">
             @foreach ($order as $item)
 
-            <h5>Status:<a class="badge badge-primary">{{$item->status}}</a></h5>
+            <h5>Status:<a class="badge bg-primary text-decoration-none">{{$item->status}}</a></h5>
                 
             @endforeach
             
             @foreach ($item->userOrder as $user)
-            <h5>Ime narucioca:<a class="badge badge-warning">{{$user->name}}</a></h5>
-            <h5>Adresa narucioca:<a class="badge badge-secondary">{{$user->email}}</a></h5>   
+            <h5>Ime narucioca:<a class="badge bg-warning text-dark">{{$user->name}}</a></h5>
+            <h5>Adresa narucioca:<a class="badge bg-secondary text-dark text-decoration-none">{{$user->email}}</a></h5>   
             @endforeach
 
             @foreach ($item->orderItems as $orderItem)
-            <h5>Proizvod:<a class="badge badge-info">{{$orderItem->product->product_name}}</a> <a class="badge badge-success">{{$orderItem->product->price}} KM</a></h5>   
+            <h5>Proizvod:<a class="badge bg-info text-dark text-decoration-none">{{$orderItem->product->product_name}}</a> <a class="badge badge-success">{{$orderItem->product->price}} KM</a></h5>   
             @endforeach
 
-            <h5>Ukupna cijena:<a class="badge badge-success">{{$item->total_amount}} KM</a></h5>
+            <h5>Ukupna cijena:<a class="badge bg-success text-decoration-none">{{$item->total_amount}} KM</a></h5>
             
             @if ($item->status === 'Naruceno')
             <a href="{{route('send-product',['id'=>$item->id])}}" class="btn btn-outline-danger">Posalji</a>

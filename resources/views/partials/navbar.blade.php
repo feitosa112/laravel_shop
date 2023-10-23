@@ -3,18 +3,18 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
+    <div class="container-fluid" id="navbarNav">
+        <ul class="navbar-nav float-start">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('allCategories') }}"><i class="fa fa-bars" aria-hidden="true"></i> Kategorije</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav float-end">
             <!-- Authentication Links -->
             @guest
                 @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> {{ __('Login') }}</a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-right-to-bracket"></i> {{ __('Login') }}</a>
                     </li>
                 @endif
                 @if (Route::has('register'))

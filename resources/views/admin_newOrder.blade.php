@@ -10,7 +10,7 @@ NewOrder
 
 <div class="container">
     <div class="row">
-        <div class="col-6">
+        <div class="col-xl-6 col-sm-12 col-md-12 col-lg-12">
             @if (count($newOrders) === 0)
             <h4 class="display-4 text-center">Trenutno nema novih narudzbi</h4>
             @else 
@@ -19,7 +19,7 @@ NewOrder
 
             @foreach ($newOrders as $index=> $newOrder)
             {{-- @dd($newOrder->userOrder) --}}
-            <table class="table-dark mb-5" style="width: 100%">
+            <table class="table table-dark mb-5" style="width: 100%">
                 <thead>
                     <tr>
                         <th scope="col">Order {{$index+1}}</th>
@@ -38,7 +38,7 @@ NewOrder
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$newOrder->id}}</td>
-                                <td><a href="{{route('newOrderView',['id'=>$newOrder->id])}}" class="badge badge-warning">Wiew</a></td>
+                                <td><a href="{{route('newOrderView',['id'=>$newOrder->id])}}" class="badge bg-warning text-dark text-decoration-none">Wiew</a></td>
                             </tr>
                  
                     @endforeach
@@ -51,10 +51,10 @@ NewOrder
     
 
 
-        <div class="col-6">
+        <div class="col-xl-6 col-sm-12 col-md-12 col-lg-12">
             <h4 class="display-4 text-center">Sve narudzbe</h4>
             @foreach ($allOrders as $index => $item)
-            <table class="table-dark mb-5" style="width: 100%">
+            <table class="table table-dark mb-5" style="width: 100%">
                 <thead>
                     <tr>
                         <th scope="col">Order {{$index+1}}</th>
@@ -73,7 +73,7 @@ NewOrder
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$item->id}}</td>
-                        <td><a href="{{route('newOrderView',['id'=>$item->id])}}" class="badge badge-warning">Wiew</a></td>
+                        <td><a href="{{route('newOrderView',['id'=>$item->id])}}" class="badge bg-warning text-dark text-decoration-none">Wiew</a></td>
                     </tr>
                     @endforeach
                 </tbody>

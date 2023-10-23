@@ -18,8 +18,8 @@ Cart
                 <p class="float-left"><b>{{$item->product_name}}</b></p>
             </div>
             <div class="card-footer">
-                <a href="" class="badge badge-success badge-sm float-left">{{$item->price}} KM</a>
-                <a href="{{route('deleteFromCart',['id'=>$item->id])}}" class="badge badge-danger badge-sm float-right">Obrisi iz korpe</a>
+                <a href="" class="badge bg-success text-light float-start text-decoration-none">{{$item->price}} KM</a>
+                <a href="{{route('deleteFromCart',['id'=>$item->id])}}" class="badge bg-danger  float-end text-decoration-none">Obrisi iz korpe</a>
             </div>
         </div>
     </div>

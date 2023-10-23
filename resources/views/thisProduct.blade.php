@@ -20,19 +20,19 @@ This product
     @endif
 
     <p><b>{{$result->product_name}}</b></p>
-    <a href="" class="btn btn-success btn-sm float-left">{{$result->price}} KM</a>
+    <a href="" class="btn btn-success btn-sm float-left" style="text-decoration:none">{{$result->price}} KM</a>
     @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
         
         @if (in_array($result->id,array_column(Session::get('cart',[]),'id')))
-            <a href="" class="badge badge-secondary btn-sm float-right">Proizvod je u korpi</a>
+            <a href="" class="badge bg-secondary float-end text-decoration-none">Proizvod je u korpi</a>
             @else
-            <a href="{{route('addToCart',['id'=>$result->id])}}" class="badge badge-warning btn-sm float-right">Dodaj u korpu</a>
+            <a href="{{route('addToCart',['id'=>$result->id])}}" class="badge bg-warning text-dark float-end text-decoration-none">Dodaj u korpu</a>
 
         @endif
         @endif
         @if (Auth::user() && Auth::user()->email === 'admin@gmail.com')
-            <a href="{{route('deleteProduct',['id'=>$result->id])}}" class="btn btn-danger btn-sm float-right">Delete</a>
-            <a href="{{route('editProductView',['id'=>$result->id])}}" class="btn btn-warning btn-sm float-right">Edit</a>
+            <a href="{{route('deleteProduct',['id'=>$result->id])}}" class="btn btn-danger btn-sm float-right text-decoration-none">Delete</a>
+            <a href="{{route('editProductView',['id'=>$result->id])}}" class="btn btn-warning btn-sm float-right text-decoration-none">Edit</a>
         @endif
         <br><br>
         <p class="float-left"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
