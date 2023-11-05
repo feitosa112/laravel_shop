@@ -22,37 +22,37 @@ This product
     <div class="row">
         <div class="col-2">
             @if ($result->product_image != null)
-                <img src="/image/{{$result->product_image}}" style="width: 80px;height:50px" class="second" alt=""><br>    
+                <img src="/image/{{$result->product_image}}" style="width: 100%;height:100%" class="second" alt=""><br>    
             @endif
         </div>
 
         <div class="col-2">
             @if ($result->product_image2 != null)
-                <img src="/image/{{$result->product_image2}}" style="width: 80px;height:50px" class="second" alt=""><br>
+                <img src="/image/{{$result->product_image2}}" style="width: 100%;height:100%" class="second" alt=""><br>
             @endif
         </div>
     
         <div class="col-2">
             @if ($result->product_image3 != null)
-                <img src="/image/{{$result->product_image3}}" style="width: 80px;height:50px" class="second" alt=""><br>
+                <img src="/image/{{$result->product_image3}}" style="width: 100%;height:100%" class="second" alt=""><br>
             @endif
         </div>
 
         <div class="col-2">
             @if ($result->product_image4 != null)
-                <img src="/image/{{$result->product_image4}}" style="width: 80px;height:50px" class="second" alt=""><br>
+                <img src="/image/{{$result->product_image4}}" style="width: 100%;height:100%" class="second" alt=""><br>
             @endif
         </div>
 
         <div class="col-2">
             @if ($result->product_image5 != null)
-                <img src="/image/{{$result->product_image5}}" style="width: 80px;height:50px" class="second" alt=""><br>
+                <img src="/image/{{$result->product_image5}}" style="width: 100%;height:100%" class="second" alt=""><br>
             @endif
         </div>
 
         <div class="col-2">
             @if ($result->product_image6 != null)
-                <img src="/image/{{$result->product_image6}}" style="width: 80px;height:50px" class="second" alt=""><br>
+                <img src="/image/{{$result->product_image6}}" style="width: 100%;height:100%" class="second" alt=""><br>
             @endif
         </div>
     </div>

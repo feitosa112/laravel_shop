@@ -10,6 +10,7 @@ use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session ;
+use Laravel\Ui\Presets\React;
 
 class ProductController extends Controller
 {
@@ -140,13 +141,46 @@ class ProductController extends Controller
         $product->subcategory_id = $request->subcategory;
         
 
-        if($request->hasFile('newImg')){
-            $product_image = $request->file('newImg');
+        if($request->hasFile('newImg1')){
+            $product_image = $request->file('newImg1');
             $imgName = time().'1.'.$product_image->extension();
             $product_image->move(public_path('image'),$imgName);
             $product->product_image = $imgName;
-        }else{
-            $product->product_image = $request->input('product_image');
+        }
+
+        if($request->hasFile('newImg2')){
+            $product_image2 = $request->file('newImg2');
+            $imgName2 = time().'2.'.$product_image2->extension();
+            $product_image2->move(public_path('image'),$imgName2);
+            $product->product_image2 = $imgName2;
+        }
+
+        if($request->hasFile('newImg3')){
+            $product_image3 = $request->file('newImg3');
+            $imgName3 = time().'3.'.$product_image3->extension();
+            $product_image3->move(public_path('image'),$imgName3);
+            $product->product_image3 = $imgName3;
+        }
+
+        if($request->hasFile('newImg4')){
+            $product_image4 = $request->file('newImg4');
+            $imgName4 = time().'4.'.$product_image4->extension();
+            $product_image4->move(public_path('image'),$imgName4);
+            $product->product_image4 = $imgName4;
+        }
+
+        if($request->hasFile('newImg5')){
+            $product_image5 = $request->file('newImg5');
+            $imgName5 = time().'5.'.$product_image5->extension();
+            $product_image5->move(public_path('image'),$imgName5);
+            $product->product_image5 = $imgName5;
+        }
+
+        if($request->hasFile('newImg6')){
+            $product_image6 = $request->file('newImg6');
+            $imgName6 = time().'6.'.$product_image6->extension();
+            $product_image6->move(public_path('image'),$imgName6);
+            $product->product_image6 = $imgName6;
         }
 
         $product->save();
@@ -154,13 +188,7 @@ class ProductController extends Controller
         return redirect()->back()->with('updateProduct','Uspjesno ste sacuvali izmjene');
     }
 
-    public function deleteImage($id){
-        $product = ProductModel::find($id);
-        $product->product_image = '';
-        $product->save();
-        return redirect()->back()->with('deleteImage','Uspjesno ste obrisali sliku');
-
-    }
+    
 
     public function addNewProductView(){
         $categories = CategoryModel::all();
@@ -240,6 +268,35 @@ class ProductController extends Controller
         
 
         return redirect()->route('home')->with('addNewProduct','Uspjesno ste dodali novi proizvod');
+    }
+
+    public function deleteImage($name){
+        
+        $allProducts = ProductModel::all();
+        foreach ($allProducts as $product) {
+            if($product->product_image == $name){
+                $product->product_image = null;
+            }
+            elseif($product->product_image2 == $name){
+                $product->product_image2 = null;
+            }
+            elseif($product->product_image3 == $name){
+                $product->product_image3 = null;
+            }
+            elseif($product->product_image4 == $name){
+                $product->product_image4 = null;
+            }
+            elseif($product->product_image5 == $name){
+                $product->product_image5 = null;
+            }
+            elseif($product->product_image6 == $name){
+                $product->product_image6 = null;
+            }
+        }
+        $product->save();
+
+        return redirect()->back()->with('deleteImage','Uspjesno ste obrisali sliku');
+
     }
 
     

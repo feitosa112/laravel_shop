@@ -34,7 +34,7 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('/delete-product/{id}','deleteProduct')->name('deleteProduct');
     Route::get('/edit-product-view/{id}','editProductView')->name('editProductView');
     Route::post('/update/{id}','updateProduct')->name('update');
-    Route::get('/delete-image/{id}','deleteImage')->name('deleteImage');
+    Route::get('/delete-image/{name}','deleteImage')->name('deleteImage');
     Route::get('add-new-product','addNewProductView')->name('addNewProduct');
     Route::post('/add-new-product','addNewProduct')->name('addNewProduct');
 
