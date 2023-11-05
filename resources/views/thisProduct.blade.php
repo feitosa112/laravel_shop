@@ -11,22 +11,64 @@ This product
 @foreach ($results as $result)
 
 <div class="col-8 col-sm-5 offset-3 mt-5 text-center" style="border:1px dotted #a7b2c2">
-    <img src="/image/{{$result->product_image}}" style="width: 250px;height:200px" alt=""><br>
-    @if ($result->product_image2 != null)
-    <img src="/image/{{$result->product_image2}}" style="width: 150px;height:100px" alt=""><br>
-    @endif
-    @if ($result->product_image3 != null)
-    <img src="/image/{{$result->product_image3}}" style="width: 150px;height:100px" alt=""><br>
-    @endif
+    <div class="row">
+        <div class="col-8 offset-2">
+            @if ($result->product_image != null)
+                <img src="/image/{{$result->product_image}}" style="width: 90%;height:80%" id="current" alt=""><br>    
+            @endif
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            @if ($result->product_image != null)
+                <img src="/image/{{$result->product_image}}" style="width: 80px;height:50px" class="second" alt=""><br>    
+            @endif
+        </div>
+
+        <div class="col-2">
+            @if ($result->product_image2 != null)
+                <img src="/image/{{$result->product_image2}}" style="width: 80px;height:50px" class="second" alt=""><br>
+            @endif
+        </div>
+    
+        <div class="col-2">
+            @if ($result->product_image3 != null)
+                <img src="/image/{{$result->product_image3}}" style="width: 80px;height:50px" class="second" alt=""><br>
+            @endif
+        </div>
+
+        <div class="col-2">
+            @if ($result->product_image4 != null)
+                <img src="/image/{{$result->product_image4}}" style="width: 80px;height:50px" class="second" alt=""><br>
+            @endif
+        </div>
+
+        <div class="col-2">
+            @if ($result->product_image5 != null)
+                <img src="/image/{{$result->product_image5}}" style="width: 80px;height:50px" class="second" alt=""><br>
+            @endif
+        </div>
+
+        <div class="col-2">
+            @if ($result->product_image6 != null)
+                <img src="/image/{{$result->product_image6}}" style="width: 80px;height:50px" class="second" alt=""><br>
+            @endif
+        </div>
+    </div>
+
+
+    
+    
 
     <p><b>{{$result->product_name}}</b></p>
-    <a href="" class="btn btn-success btn-sm float-left" style="text-decoration:none">{{$result->price}} KM</a>
+    <a href="" class="btn btn-success btn-sm float-start ms-2" style="text-decoration:none">{{$result->price}} KM</a>
     @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
         
         @if (in_array($result->id,array_column(Session::get('cart',[]),'id')))
-            <a href="" class="badge bg-secondary float-end text-decoration-none">Proizvod je u korpi</a>
+            <a href="" class="btn btn-secondary btn-sm float-end text-decoration-none me-2">Proizvod je u korpi</a>
             @else
-            <a href="{{route('addToCart',['id'=>$result->id])}}" class="badge bg-warning text-dark float-end text-decoration-none">Dodaj u korpu</a>
+            <a href="{{route('addToCart',['id'=>$result->id])}}" class="btn btn-warning btn-sm text-dark float-end text-decoration-none me-2">Dodaj u korpu</a>
 
         @endif
         @endif
@@ -65,4 +107,21 @@ This product
     
 @endforeach
  
+@endsection
+
+@section('scripts')
+<script>
+    var current=document.getElementById('current');
+    var slike=document.getElementsByClassName('second');
+
+    for(var i=0;i<slike.length;i++){
+    slike[i].addEventListener('click',display);
+    }
+    function display(){
+    var sl=this.getAttribute('src');
+    current.setAttribute('src',sl);
+    }
+
+    
+</script>
 @endsection

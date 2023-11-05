@@ -14,7 +14,13 @@ class ProductModel extends Model
         'product_image',
         'price',
         'category_id',
-        'subcategory_id'
+        'subcategory_id',
+        'product_image2',
+        'product_image3',
+        'product_image4',
+        'product_image5',
+        'product_image6',
+
     ];
 
     public function productCat(){

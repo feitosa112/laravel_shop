@@ -30,7 +30,27 @@
                     @if (App\Models\OrderModel::where('status', 'Naruceno')->exists())
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('newOrder') }}" style="color:red"><i class="fa fa-external-link-square" aria-hidden="true"></i> You have new order</a>
+                            <audio id="notification-sound">
+                                <source src="/audio/notifications-sound-127856.mp3" type="audio/mpeg">
+                            </audio>
                         </li>
+                        <script>
+                            var audio = document.getElementById('notification-sound');
+                            audio.oncanplaythrough = function () {
+                                audio.play();
+                            };
+
+                            var audio = new Audio("/audio/notifications-sound-127856.mp3");
+                            var hasInteracted = false;
+
+                            document.addEventListener("click", function() {
+                            if (!hasInteracted) {
+                            audio.play();
+                            hasInteracted = true;
+                                    }
+    });
+                        
+                        </script>
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('newOrder') }}"><i class="fa fa-bars" aria-hidden="true"></i> All orders</a>

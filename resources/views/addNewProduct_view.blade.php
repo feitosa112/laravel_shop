@@ -41,12 +41,12 @@ Add new Product
                 <label for="description">Description:</label><br><br>
                 <textarea name="description" id="" cols="45" rows="5"></textarea>
                 <label for="image">Odaberi sliku:</label>
-                <input type="file" name="image" class="form-control"><br>
-                <input type="file" name="image2" class="form-control"><br>
-                <input type="file" name="image3" class="form-control"><br>
-                <input type="file" name="image4" class="form-control"><br>
-                <input type="file" name="image5" class="form-control"><br>
-                <input type="file" name="image6" class="form-control"><br>
+                <input type="file" name="product_image" class="form-control"><br>
+                <input type="file" name="product_image2" class="form-control"><br>
+                <input type="file" name="product_image3" class="form-control"><br>
+                <input type="file" name="product_image4" class="form-control"><br>
+                <input type="file" name="product_image5" class="form-control"><br>
+                <input type="file" name="product_image6" class="form-control"><br>
 
 
                 <button class="btn btn-primary form-control">Sacuvaj</button>

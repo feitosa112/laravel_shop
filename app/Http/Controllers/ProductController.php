@@ -173,62 +173,57 @@ class ProductController extends Controller
             'price'=>'required|integer',
             'category'=>'required|integer',
             'description'=>'required|string|min:5',
-            'product_image'=>'mimes:jpg,jpeg,png'
+            'product_image'=>'mimes:jpg,jpeg,png',
+            'product_image2'=>'mimes:jpg,jpeg,png',
+            'product_image3'=>'mimes:jpg,jpeg,png',
+            'product_image4'=>'mimes:jpg,jpeg,png',
+            'product_image5'=>'mimes:jpg,jpeg,png',
+            'product_image6'=>'mimes:jpg,jpeg,png'
+
         ]);
-        if($request->hasFile('image')){
-            $product_image = $request->file('image');
+        
+        if($request->hasFile('product_image')){
+            $product_image = $request->file('product_image');
             $imgName = time().'1.'.$product_image->extension();
             $product_image->move(public_path('image'),$imgName);
              
-        }else{
-            $product_image = '';
         }
 
-        if($request->hasFile('image2')){
-            $product_image = $request->file('image2');
-            $imgName2 = time().'2.'.$product_image->extension();
-            $product_image->move(public_path('image2'),$imgName2);
+        if($request->hasFile('product_image2')){
+            $product_image2 = $request->file('product_image2');
+            $imgName2 = time().'2.'.$product_image2->extension();
+            $product_image2->move(public_path('image'),$imgName2);
+        
              
-        }else{
-            $product_image = '';
         }
 
-        if($request->hasFile('image3')){
-            $product_image = $request->file('image3');
-            $imgName3 = time().'3.'.$product_image->extension();
-            $product_image->move(public_path('image3'),$imgName3);
+        if($request->hasFile('product_image3')){
+            $product_image3 = $request->file('product_image3');
+            $imgName3 = time().'3.'.$product_image3->extension();
+            $product_image3->move(public_path('image'),$imgName3);
              
-        }else{
-            $product_image = '';
         }
 
-        if($request->hasFile('image4')){
-            $product_image = $request->file('image4');
-            $imgName4 = time().'4.'.$product_image->extension();
-            $product_image->move(public_path('image4'),$imgName4);
+        if($request->hasFile('product_image4')){
+            $product_image4 = $request->file('product_image4');
+            $imgName4 = time().'4.'.$product_image4->extension();
+            $product_image4->move(public_path('image'),$imgName4);
              
-        }else{
-            $product_image = '';
         }
 
-        if($request->hasFile('image5')){
-            $product_image = $request->file('image5');
-            $imgName5 = time().'5.'.$product_image->extension();
-            $product_image->move(public_path('image5'),$imgName5);
+        if($request->hasFile('product_image5')){
+            $product_image5 = $request->file('product_image5');
+            $imgName5 = time().'5.'.$product_image5->extension();
+            $product_image5->move(public_path('image'),$imgName5);
              
-        }else{
-            $product_image = '';
         }
 
-        if($request->hasFile('image6')){
-            $product_image = $request->file('image6');
-            $imgName6 = time().'6.'.$product_image->extension();
-            $product_image->move(public_path('image6'),$imgName6);
+        if($request->hasFile('product_image6')){
+            $product_image6 = $request->file('product_image6');
+            $imgName6 = time().'6.'.$product_image6->extension();
+            $product_image6->move(public_path('image'),$imgName6);
              
-        }else{
-            $product_image = '';
         }
-
         ProductModel::create([
             'product_name'=>$request->input('product_name'),
             'price'=>$request->input('price'),
@@ -242,6 +237,7 @@ class ProductController extends Controller
 
 
         ]);
+        
 
         return redirect()->route('home')->with('addNewProduct','Uspjesno ste dodali novi proizvod');
     }
