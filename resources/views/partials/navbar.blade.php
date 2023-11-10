@@ -8,6 +8,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('allCategories') }}"><i class="fa fa-bars" aria-hidden="true"></i> Kategorije</a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('exchangeRate')}}" class="nav-link"><i class="fa-solid fa-money-bill"></i> Kursna lista</a>
+            </li>
         </ul>
         <ul class="navbar-nav float-end">
             <!-- Authentication Links -->

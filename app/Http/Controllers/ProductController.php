@@ -128,9 +128,7 @@ class ProductController extends Controller
         $request->validate([
             'product_name' => 'required|string',
             'price' => 'required|integer',
-            // 'category_id'=>'required|integer',
-            'subcategory'=>'required|integer'
-            // 'product_image' => 'mimes:jpg,jpeg,png'
+           
         ]);
 
         $product = ProductModel::findOrFail($id);

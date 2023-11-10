@@ -46,12 +46,7 @@ Edit product view
                
                 </select><br>
 
-                <label for="subcategory">Odaberi podkategoriju</label><br>
-                <select name="subcategory" class="form-control" id="">
-                    @foreach ($subcategories as $subcategory)
-                    <option value="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</option>
-                    @endforeach
-                </select>
+                
                     
                 <label for="price"><p><b>Cijena:</b></p></label>
                 <input type="number" class="form-control" name="price" value="{{$product->price}}"><br>

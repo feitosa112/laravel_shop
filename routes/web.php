@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Models\CategoryModel;
+use App\Models\CurrencyModel;
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +50,8 @@ Route::controller(OrderController::class)->group(function(){
 });
 
 Route::post('sendMsg/{id}',[MessageController::class,'sendMsg'])->name('sendMsg')->middleware('auth');
+Route::get('exchange-rate',[CurrencyController::class,'getCurrency'])->name('exchangeRate');
+Route::get('/todays-exchange-rate',[CurrencyController::class,'todaysExchangeRate'])->name('todaysExchangeRate');
 
 
 

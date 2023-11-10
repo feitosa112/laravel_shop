@@ -84,6 +84,7 @@ Welcome page
                 </div>
                     
                 @endforeach
+                
             </div>
         </div>
         
