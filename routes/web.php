@@ -4,13 +4,19 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Models\CategoryModel;
-use App\Models\CurrencyModel;
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Cashier\Http\Controllers\WebhookController;
 
+
+Route::post(
+    'stripe/webhook',
+    [WebhookController::class, 'handleWebhook']
+);
 Auth::routes();
 
 Route::get('/', function () {
@@ -53,5 +59,7 @@ Route::post('sendMsg/{id}',[MessageController::class,'sendMsg'])->name('sendMsg'
 Route::get('exchange-rate',[CurrencyController::class,'getCurrency'])->name('exchangeRate');
 Route::get('/todays-exchange-rate',[CurrencyController::class,'todaysExchangeRate'])->name('todaysExchangeRate');
 
+Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment/process', 'PaymentController@processPayment')->name('payment.process');
 
 
