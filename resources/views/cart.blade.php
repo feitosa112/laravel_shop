@@ -38,6 +38,8 @@ Cart
             @else
             <h5 class="display-4 float-left">Total:{{$total}}</h5>
             <a href="{{route('orderExecute')}}" class="btn btn-primary float-right mt-3"type="submit" name="save">Naruci</a>
+            <a href="{{route('payment.form')}}" class="btn btn-info float-right mt-3"type="submit" name="save">Plati karticom</a>
+
             @endif
             
             
