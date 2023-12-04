@@ -15,9 +15,14 @@ class CurrencyController extends Controller
         return view('getCurrency',compact('todaysExchangeRate'));
     }
     public function todaysExchangeRate(){
-        Artisan::call('exchange:rate');
+        try{
+            Artisan::call('exchange:rate');
 
-        
+        }catch(\Exception $e){
+            $this->error($e->getMessage());
+        }
+
+
         return redirect()->back()->with('currency','You have successfully updated the course list');
     }
 }
