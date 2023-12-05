@@ -21,8 +21,9 @@ Auth::routes();
 
 Route::get('/', function () {
     $categories=CategoryModel::take(14)->get();
-    $results = ProductModel::all();
-    return view('welcome',['categories'=>$categories,'results'=>$results]);
+    $results = ProductModel::paginate(6);
+    $paginator = $results->links()->paginator;
+    return view('welcome',['categories'=>$categories,'results'=>$results,'paginator'=>$paginator]);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

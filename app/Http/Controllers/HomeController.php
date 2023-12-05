@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories=CategoryModel::take(10)->get();
-        $results = ProductModel::paginate(3);
+        $results = ProductModel::paginate(6);
         $paginator = $results->links()->paginator;
         return view('welcome',['categories'=>$categories,'results'=>$results,'paginator'=>$paginator]);
     }
