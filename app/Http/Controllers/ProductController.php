@@ -19,11 +19,11 @@ class ProductController extends Controller
     public function __construct() {
         $this->productRepo = new ProductRepository();
     }
-    
+
     public function thisCategory($id){
 
         $results = $this->productRepo->getProductWithCategory($id);
-        
+
         if(count($results) === 0){
             return redirect()->back()->with('error','Nema rezultata pretrage');
         }else{
@@ -53,15 +53,15 @@ class ProductController extends Controller
             $cart = Session::get('cart',[]);
             $cart[$id] = $product;
             Session::put('cart',$cart);
-            
-    
+
+
             return redirect()->back()->with('success', 'Proizvod je dodat u korpu.');
         }
         else
         {
             return redirect()->back()->with('amount', 'Proizvoda nema trenutno na stanju');
         }
-        
+
     }
 
     public function cartView(){
@@ -71,6 +71,16 @@ class ProductController extends Controller
             $total+=$product->price;
         }
         return view('cart',compact('cart','total'));
+    }
+
+    public function showPaymentForm()
+    {
+        $cart = Session::get('cart',[]);
+        $total = 0;
+        foreach($cart as $product){
+            $total+=$product->price;
+        }
+        return view('payment.form',compact('cart','total'));
     }
 
     public function deleteFromCart($id){
@@ -88,7 +98,7 @@ class ProductController extends Controller
 
     public function search(Request $request){
         $keyword = strtoupper($request->input('search'));
-        
+
         $results = DB::table('product')
     ->select('product.*', 'categories.category_name', 'subcategories.subcategory_name')
     ->leftJoin('categories', 'product.category_id', '=', 'categories.id')
@@ -124,11 +134,11 @@ class ProductController extends Controller
     public function updateProduct(Request $request,$id){
         // dd($request->file('newImg'));
 
-        
+
         $request->validate([
             'product_name' => 'required|string',
             'price' => 'required|integer',
-           
+
         ]);
 
         $product = ProductModel::findOrFail($id);
@@ -137,7 +147,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->category_id = $request->input('category');
         $product->subcategory_id = $request->subcategory;
-        
+
 
         if($request->hasFile('newImg1')){
             $product_image = $request->file('newImg1');
@@ -186,7 +196,7 @@ class ProductController extends Controller
         return redirect()->back()->with('updateProduct','Uspjesno ste sacuvali izmjene');
     }
 
-    
+
 
     public function addNewProductView(){
         $categories = CategoryModel::all();
@@ -207,48 +217,48 @@ class ProductController extends Controller
             'product_image6'=>'mimes:jpg,jpeg,png'
 
         ]);
-        
+
         if($request->hasFile('product_image')){
             $product_image = $request->file('product_image');
             $imgName = time().'1.'.$product_image->extension();
             $product_image->move(public_path('image'),$imgName);
-             
+
         }
 
         if($request->hasFile('product_image2')){
             $product_image2 = $request->file('product_image2');
             $imgName2 = time().'2.'.$product_image2->extension();
             $product_image2->move(public_path('image'),$imgName2);
-        
-             
+
+
         }
 
         if($request->hasFile('product_image3')){
             $product_image3 = $request->file('product_image3');
             $imgName3 = time().'3.'.$product_image3->extension();
             $product_image3->move(public_path('image'),$imgName3);
-             
+
         }
 
         if($request->hasFile('product_image4')){
             $product_image4 = $request->file('product_image4');
             $imgName4 = time().'4.'.$product_image4->extension();
             $product_image4->move(public_path('image'),$imgName4);
-             
+
         }
 
         if($request->hasFile('product_image5')){
             $product_image5 = $request->file('product_image5');
             $imgName5 = time().'5.'.$product_image5->extension();
             $product_image5->move(public_path('image'),$imgName5);
-             
+
         }
 
         if($request->hasFile('product_image6')){
             $product_image6 = $request->file('product_image6');
             $imgName6 = time().'6.'.$product_image6->extension();
             $product_image6->move(public_path('image'),$imgName6);
-             
+
         }
         ProductModel::create([
             'product_name'=>$request->input('product_name'),
@@ -263,13 +273,13 @@ class ProductController extends Controller
 
 
         ]);
-        
+
 
         return redirect()->route('home')->with('addNewProduct','Uspjesno ste dodali novi proizvod');
     }
 
     public function deleteImage($name){
-        
+
         $allProducts = ProductModel::all();
         foreach ($allProducts as $product) {
             if($product->product_image == $name){
@@ -297,5 +307,5 @@ class ProductController extends Controller
 
     }
 
-    
+
 }

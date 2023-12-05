@@ -2,7 +2,7 @@
 
 @section('title')
 Cart
-    
+
 @endsection
 
 @section('content')
@@ -24,30 +24,30 @@ Cart
         </div>
     </div>
 </div><br>
-    
+
 @endforeach
 @if (Auth::user())
 <div class="container">
     <div class="row" style="border:1px dotted black">
         <div class="col-6 offset-3">
             @if (count($cart) === 0)
-                <h4 class="display-4 text-center">Vasa korpa je prazna</h4> 
-                
-            
-                
+                <h4 class="display-4 text-center">Vasa korpa je prazna</h4>
+
+
+
             @else
             <h5 class="display-4 float-left">Total:{{$total}}</h5>
             <a href="{{route('orderExecute')}}" class="btn btn-primary float-right mt-3"type="submit" name="save">Naruci</a>
             <a href="{{route('payment.form')}}" class="btn btn-info float-right mt-3"type="submit" name="save">Plati karticom</a>
 
             @endif
-            
-            
-            
+
+
+
         </div>
     </div>
 </div>
 @endif
 
-    
+
 @endsection

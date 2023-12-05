@@ -11,21 +11,21 @@ use Illuminate\Support\Facades\Session;
 class OrderController extends Controller
 {
     private $orderRepo;
-    
+
 
     public function __construct(OrderRepository $orderRepo) {
         $this->orderRepo = $orderRepo;
     }
 
-    
-   
+
+
     public function orderExecute(){
-        
+
     $cart = Session::get('cart',[]);
 
     if($cart != null){
         $order = $this->orderRepo->getOrderExecute($cart);
-        
+
         foreach($cart as $product){
             OrderItemModel::create([
                 'product_id' => $product->id,
@@ -33,12 +33,14 @@ class OrderController extends Controller
             ]);
         }
     }
-        
+
 
         Session::forget('cart');
 
         return redirect(route('home'))->with('orderExecute','Uspjesno ste izvrsili narudzbu');
     }
+
+
 
     public function getMyOrder(){
         $id = Auth::user()->id;
@@ -64,5 +66,5 @@ class OrderController extends Controller
         return redirect(route('home'))->with('isSend','Procesuirali ste narudzbu');
     }
 
-  
+
 }
