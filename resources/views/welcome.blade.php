@@ -22,7 +22,7 @@ Welcome page
      </div>
      <div class="row" style="margin-left: 15px">
         @foreach ($categories as $cat)
-            <div class="col-1 m-2">
+            <div class="col-1 m-2 text-center">
                 <a href="{{route('thisCategory',['id'=>$cat->id])}}" style="text-decoration: none;color:black">
                     <img src="image/{{$cat->image}}" class="img-fluid" id="slicice"  style="border-radius: 50%;width:50px;height:50px;" alt="">
                     <p style="font-size: 10px">{{$cat->category_name}}</p>
