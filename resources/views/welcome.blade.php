@@ -36,7 +36,7 @@ Welcome page
 </div>
 <br>
 
-        <div class="container">
+        <div class="container text-center">
             <div class="row">
                 @foreach ($results as $result)
 

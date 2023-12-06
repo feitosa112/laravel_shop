@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Repositories;
 
 use App\Models\ProductModel;
@@ -12,11 +12,14 @@ class ProductRepository {
     }
 
     public function getProductWithCategory($id){
-        return $this->productModel->where(['category_id'=>$id])->get();
+        $result = $this->productModel->where(['category_id'=>$id])->paginate(6);
+
+
+        return $result;
     }
 
     public function getProductWithSubcategory($id){
-        return $this->productModel->where(['subcategory_id'=>$id])->get();
+        return $this->productModel->where(['subcategory_id'=>$id])->paginate(6);
     }
 
     public function getProductWithId($id){

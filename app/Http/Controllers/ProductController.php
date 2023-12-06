@@ -23,20 +23,22 @@ class ProductController extends Controller
     public function thisCategory($id){
 
         $results = $this->productRepo->getProductWithCategory($id);
-
+        $paginator = $results->links()->paginator;
         if(count($results) === 0){
             return redirect()->back()->with('error','Nema rezultata pretrage');
         }else{
-            return view('thisCategory',compact('results'));
+            return view('thisCategory',compact('results','paginator'));
         }
     }
 
     public function thisSubCategory($id){
         $results = $this->productRepo->getProductWithSubcategory($id);
+        $paginator = $results->links()->paginator;
+
         if(count($results) === 0){
             return redirect()->back()->with('error','Nema rezultata pretrage');
         }else{
-            return view('thisSubCategory',compact('results'));
+            return view('thisSubCategory',compact('results','paginator'));
 
         }
     }
