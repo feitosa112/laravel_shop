@@ -24,6 +24,6 @@
         "webpack-cli": "^5.1.4"
     },
     "dependencies": {
-        "vue": "^3.3.9"
+        "jquery": "^3.7.1"
     }
 }

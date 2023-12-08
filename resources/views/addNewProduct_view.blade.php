@@ -2,7 +2,7 @@
 
 @section('title')
 Add new Product
-    
+
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@ Add new Product
             @foreach($errors->all() as $error)
 
             <p style="color: red">{{$error}}</p>
-    
+
             @endforeach
             @endif
             <form action="{{route('addNewProduct')}}" method="POST" enctype="multipart/form-data">
@@ -25,28 +25,26 @@ Add new Product
                 <label for="product_name">
                     Naziv proizvoda:
                 </label>
-                <input type="text" name="product_name" placeholder="product_name" class="form-control">
+                <input type="text" name="product_name" placeholder="product_name" value="{{old('product_name')}}" class="form-control">
                 <br>
                 <label for="category">Odaberi kategoriju:</label>
-                <select name="category" id=""class="form-control">
+                <select name="category" id="" class="form-control">
                     @foreach ($categories as $category)
-                    
-                    <option value="{{$category->id}}" >{{{$category->category_name}}}</option>
-                       
+                        <option value="{{$category->id}}" {{ old('category') == $category->id ? 'selected' : '' }}>{{{ $category->category_name }}}</option>
                     @endforeach
                 </select><br>
                 <label for="price">Price:</label>
-                <input type="number" name="price" placeholder="price" class="form-control"><br>
+                <input type="number" name="price" placeholder="price" class="form-control" value="{{old('price')}}"><br>
 
                 <label for="description">Description:</label><br><br>
-                <textarea name="description" id="" cols="45" rows="5"></textarea>
+                <textarea name="description" id="" cols="45" rows="5">{{old('description')}}</textarea>
                 <label for="image">Odaberi sliku:</label>
-                <input type="file" name="product_image" class="form-control"><br>
-                <input type="file" name="product_image2" class="form-control"><br>
-                <input type="file" name="product_image3" class="form-control"><br>
-                <input type="file" name="product_image4" class="form-control"><br>
-                <input type="file" name="product_image5" class="form-control"><br>
-                <input type="file" name="product_image6" class="form-control"><br>
+                <input type="file" name="product_image" value="{{old('product_image')}}" class="form-control"><br>
+                <input type="file" name="product_image2" value="{{old('product_image2')}}"  class="form-control"><br>
+                <input type="file" name="product_image3" value="{{old('product_image3')}}"  class="form-control"><br>
+                <input type="file" name="product_image4" value="{{old('product_image4')}}"  class="form-control"><br>
+                <input type="file" name="product_image5" value="{{old('product_image5')}}"  class="form-control"><br>
+                <input type="file" name="product_image6" value="{{old('product_image6')}}"  class="form-control"><br>
 
 
                 <button class="btn btn-primary form-control">Sacuvaj</button>
@@ -54,5 +52,5 @@ Add new Product
         </div>
     </div>
 </div>
-    
+
 @endsection

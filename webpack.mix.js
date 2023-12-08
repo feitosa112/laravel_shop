@@ -13,5 +13,5 @@ const mix = require('laravel-mix');
 
  mix.js('resources/js/app.js', 'public/js')
  .sass('resources/sass/app.scss', 'public/css')
- .vue() // Dodajte ovaj lanac kako bi Mix pravilno obrađivao Vue komponente
+ .copy('node_modules/jquery/dist/jquery.js', 'public/js')
  .sourceMaps();
