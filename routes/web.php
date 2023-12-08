@@ -21,9 +21,10 @@ Auth::routes();
 
 Route::get('/', function () {
     $categories=CategoryModel::take(14)->get();
+    $categories1=CategoryModel::with('subcategories')->get();
     $results = ProductModel::paginate(6);
     $paginator = $results->links()->paginator;
-    return view('welcome',['categories'=>$categories,'results'=>$results,'paginator'=>$paginator]);
+    return view('welcome',['categories'=>$categories,'results'=>$results,'paginator'=>$paginator,'categories1'=>$categories1]);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
