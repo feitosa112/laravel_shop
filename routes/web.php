@@ -39,7 +39,7 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('/thisProduct/{id}','getThisProduct')->name('thisProduct');
     Route::get('/cart/{id}','addToCart')->name('addToCart')->middleware('auth');
     Route::get('/cart','cartView')->name('cartView');
-    Route::get('/payment','showPaymentForm')->name('payment.form');
+    Route::get('/payment/{id}','showPaymentForm')->name('payment.form');
     Route::get('/delete/{id}','deleteFromCart')->name('deleteFromCart');
     Route::get('/search','search')->name('search');
     Route::get('/delete-product/{id}','deleteProduct')->name('deleteProduct');
@@ -63,6 +63,6 @@ Route::post('sendMsg/{id}',[MessageController::class,'sendMsg'])->name('sendMsg'
 Route::get('exchange-rate',[CurrencyController::class,'getCurrency'])->name('exchangeRate');
 Route::get('/todays-exchange-rate',[CurrencyController::class,'todaysExchangeRate'])->name('todaysExchangeRate');
 
-Route::post('/payment/process', 'PaymentController@processPayment')->name('payment.process');
+Route::post('/payment/process/{id}', 'PaymentController@processPayment')->name('payment.process');
 
 

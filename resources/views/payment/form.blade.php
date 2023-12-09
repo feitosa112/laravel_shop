@@ -9,7 +9,7 @@
 
             @endforeach
             @endif
-    <form action="{{ route('payment.process') }}" method="post" class="form-control">
+    <form action="{{ route('payment.process',['id'=>$productOrder->id]) }}" method="post" class="form-control">
         @csrf
         <script
             src="https://checkout.stripe.com/checkout.js"

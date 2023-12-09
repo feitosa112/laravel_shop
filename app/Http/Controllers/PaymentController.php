@@ -2,13 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderItemModel;
+use App\Models\ProductModel;
+use App\Repositories\OrderRepository;
 use Illuminate\Http\Request;
 use Stripe\Charge;
 use Stripe\Stripe;
 
 class PaymentController extends Controller
 {
-    public function processPayment(Request $request)
+    private $orderRepo;
+
+
+    public function __construct(OrderRepository $orderRepo) {
+        $this->orderRepo = $orderRepo;
+    }
+
+
+    public function processPayment(Request $request,$id)
     {
         $this->validate($request,[
             'amount'=>'required|numeric|min:0.01',
@@ -32,5 +43,14 @@ class PaymentController extends Controller
             // Ako dođe do greške prilikom plaćanja, možete ovde obraditi grešku
             return response()->json(['error' => $e->getMessage()]);
         }
+        $order = $this->orderRepo->payNow($id);
+        $product = ProductModel::find($id);
+
+        OrderItemModel::create([
+            'product_id' => $product->id,
+            'order_id' => $order->id
+        ]);
+
+        return redirect(route('home'))->with('isSend','Procesuirali ste narudzbu');
     }
 }

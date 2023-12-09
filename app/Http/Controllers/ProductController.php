@@ -75,14 +75,15 @@ class ProductController extends Controller
         return view('cart',compact('cart','total'));
     }
 
-    public function showPaymentForm()
+    public function showPaymentForm($id)
     {
+        $productOrder = ProductModel::find($id);
         $cart = Session::get('cart',[]);
         $total = 0;
         foreach($cart as $product){
             $total+=$product->price;
         }
-        return view('payment.form',compact('cart','total'));
+        return view('payment.form',compact('cart','total','productOrder'));
     }
 
     public function deleteFromCart($id){

@@ -101,7 +101,7 @@ Welcome page
                                     @endif
                                 </div><br>
                                 <div class="card-post-footer">
-                                    <a href="" class="badge bg-success float-start text-decoration-none">Naruci i plati odmah</a>
+                                    <a href="{{route('payment.form',['id'=>$result->id])}}" class="badge bg-success float-start text-decoration-none">Naruci i plati odmah</a>
                                     <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" class="badge bg-primary float-end text-decoration-none">Naruci odmah</a>
 
                                 </div>
