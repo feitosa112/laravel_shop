@@ -70,7 +70,7 @@ Welcome page
                 @foreach ($results as $result)
                     <div class="col-12 col-sm-4 mb-3">
                         <a href="{{route('thisProduct',['id'=>$result->id])}}" style="text-decoration: none;color:black">
-                            <div class="card" style="border-radius: 5%;box-shadow:0px 0px 5px rgba(0,0,0,0.5)">
+                            <div class="card" style="border-radius: 5%;box-shadow:0px 0px 5px rgba(0,0,0,0.5);">
                                 <div class="card-header">
                                     @if ($result->product_image != null)
                                         <img src="/image/{{$result->product_image}}" style="width: 100%;height:80%;" alt="Nema slike">
@@ -100,6 +100,11 @@ Welcome page
                                         <a href="{{route('deleteProduct',['id'=>$result->id])}}" class="badge bg-danger text-dark float-end text-decoration-none">Delete</a>
                                     @endif
                                 </div><br>
+                                <div class="card-post-footer">
+                                    <a href="" class="badge bg-success float-start text-decoration-none">Naruci i plati odmah</a>
+                                    <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" class="badge bg-primary float-end text-decoration-none">Naruci odmah</a>
+
+                                </div>
                                 <p class="float-left"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
                             </div><br>
                         </a>

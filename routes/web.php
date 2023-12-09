@@ -52,6 +52,7 @@ Route::controller(ProductController::class)->group(function(){
 });
 Route::controller(OrderController::class)->group(function(){
     Route::get('/order','orderExecute')->name('orderExecute');
+    Route::get('/order/{id}','orderExecuteNow')->name('orderExecuteNow');
     Route::get('/my-order','getMyOrder')->name('myOrder');
     Route::get('/admin/newOrder','newOrder')->name('newOrder');
     Route::get('/admin/newOrder-view/{id}','newOrderView')->name('newOrderView');

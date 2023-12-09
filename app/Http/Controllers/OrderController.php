@@ -40,6 +40,15 @@ class OrderController extends Controller
         return redirect(route('home'))->with('orderExecute','Uspjesno ste izvrsili narudzbu');
     }
 
+    public function orderExecuteNow($id){
+        $order = $this->orderRepo->getOrderExecuteNow($id);
+        OrderItemModel::create([
+            'product_id'=>$id,
+            'order_id'=>$order->id
+        ]);
+        return redirect()->back()->with('orderExecute','Uspjesno ste izvrsili narudzbu');
+    }
+
 
 
     public function getMyOrder(){
