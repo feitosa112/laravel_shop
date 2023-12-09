@@ -37,7 +37,15 @@ This category
                         <a href="{{route('addToCart',['id'=>$result->id])}}" class="badge bg-warning text-dark float-end text-decoration-none">Dodaj u korpu</a>
 
                     @endif
+                    <br><br>
+                            <a href="{{route('payment.form',['id'=>$result->id])}}" class="badge bg-success float-start text-decoration-none">Naruci i plati odmah</a>
+                            <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" class="badge bg-primary float-end text-decoration-none">Naruci odmah</a>
                         @endif
+
+
+
+
+
 
                         @if (Auth::user() && Auth::user()->email === 'admin@gmail.com')
                         <a href="{{route('editProductView',['id'=>$result->id])}}" class="badge bg-warning text-dark  float-end text-decoration-none">Edit</a>

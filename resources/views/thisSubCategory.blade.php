@@ -45,6 +45,11 @@ This subcategory
 
                         @endif
                     </div><br>
+                    <div class="card-post-footer">
+                        <a href="{{route('payment.form',['id'=>$result->id])}}" class="badge bg-success float-start text-decoration-none">Naruci i plati odmah</a>
+                        <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" class="badge bg-primary float-end text-decoration-none">Naruci odmah</a>
+
+                    </div>
                 <p class="float-left"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
 
                 </div><br>

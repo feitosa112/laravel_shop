@@ -49,6 +49,20 @@ class OrderRepository {
 
     }
 
+    public function payNow($id){
+        if(Auth::check()){
+            $user = Auth::user();
+            $product = ProductModel::find($id);
+
+        }
+        return $this->orderModel->create([
+            'user_id'=>$user->id,
+            'status'=>'naruceno',
+            'total_amount'=>$product->price,
+            'shipping_address'=>$user->email
+        ]);
+    }
+
 
 
 

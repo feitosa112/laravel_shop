@@ -2,7 +2,7 @@
 
 @section('title')
 This product
-    
+
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@ This product
     <div class="row">
         <div class="col-8 offset-2">
             @if ($result->product_image != null)
-                <img src="/image/{{$result->product_image}}" style="width: 90%;height:80%" id="current" alt=""><br>    
+                <img src="/image/{{$result->product_image}}" style="width: 90%;height:80%" id="current" alt=""><br>
             @endif
         </div>
     </div>
@@ -22,7 +22,7 @@ This product
     <div class="row">
         <div class="col-2">
             @if ($result->product_image != null)
-                <img src="/image/{{$result->product_image}}" style="width: 100%;height:100%" class="second" alt=""><br>    
+                <img src="/image/{{$result->product_image}}" style="width: 100%;height:100%" class="second" alt=""><br>
             @endif
         </div>
 
@@ -31,7 +31,7 @@ This product
                 <img src="/image/{{$result->product_image2}}" style="width: 100%;height:100%" class="second" alt=""><br>
             @endif
         </div>
-    
+
         <div class="col-2">
             @if ($result->product_image3 != null)
                 <img src="/image/{{$result->product_image3}}" style="width: 100%;height:100%" class="second" alt=""><br>
@@ -58,13 +58,13 @@ This product
     </div>
 
 
-    
-    
+
+
 
     <p><b>{{$result->product_name}}</b></p>
     <a href="" class="btn btn-success btn-sm float-start ms-2" style="text-decoration:none">{{$result->price}} KM</a>
     @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
-        
+
         @if (in_array($result->id,array_column(Session::get('cart',[]),'id')))
             <a href="" class="btn btn-secondary btn-sm float-end text-decoration-none me-2">Proizvod je u korpi</a>
             @else
@@ -72,6 +72,11 @@ This product
 
         @endif
         @endif
+<br><br>
+            <a href="{{route('payment.form',['id'=>$result->id])}}" class="badge bg-success float-start text-decoration-none">Naruci i plati odmah</a>
+            <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" class="badge bg-primary float-end text-decoration-none">Naruci odmah</a>
+
+
         @if (Auth::user() && Auth::user()->email === 'admin@gmail.com')
             <a href="{{route('deleteProduct',['id'=>$result->id])}}" class="btn btn-danger btn-sm float-right text-decoration-none">Delete</a>
             <a href="{{route('editProductView',['id'=>$result->id])}}" class="btn btn-warning btn-sm float-right text-decoration-none">Edit</a>
@@ -85,8 +90,8 @@ This product
             <p class="float-start" style="margin-top: -5px">{{$msg->message}}</p>
             <sub class="float-end">{{$msg->created_at}}</sub>
           </div><br>
-        
-            
+
+
         @endforeach
         @if ($errors->any())
         @foreach($errors->all() as $error)
@@ -102,11 +107,11 @@ This product
             <button class="btn btn-primary form-control">Posalji poruku</button>
         </form>
         @endif
-        
+
 </div>
-    
+
 @endforeach
- 
+
 @endsection
 
 @section('scripts')
@@ -122,6 +127,6 @@ This product
     current.setAttribute('src',sl);
     }
 
-    
+
 </script>
 @endsection
