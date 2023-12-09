@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
     <a class="navbar-brand" href="{{ route('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="container-fluid" id="navbarNav">
+    <div class="container-fluid">
         <ul class="navbar-nav float-start">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('allCategories') }}"><i class="fa fa-bars" aria-hidden="true"></i> Kategorije</a>
@@ -52,7 +53,7 @@
                             hasInteracted = true;
                                     }
     });
-                        
+
                         </script>
                     @else
                         <li class="nav-item">
@@ -84,4 +85,5 @@
             @endguest
         </ul>
     </div>
+</div>
 </nav>

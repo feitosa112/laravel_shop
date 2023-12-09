@@ -8,23 +8,11 @@ Welcome page
 {{-- @dd($results->links()->elements) --}}
 
  <div class="container">
-    <div class="row">
-        <div class="col-6 offset-3">
-            <form action="{{route('search')}}">
-                <div class="input-group mb-3">
-                    <input type="text" placeholder="Search" name="search" class="form-control">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-     </div>
-     <div class="row" style="margin-left: 15px">
+   @include('searchCard')
+     <div class="row" style="">
         @foreach ($categories as $cat)
 
-            <div class="col-1 m-2 text-center d-none d-lg-flex">
+            <div class="col-2 me-2 col-md-2 col-lg-1 mb-2 mx-auto">
                 <a href="{{route('thisCategory',['id'=>$cat->id])}}" style="text-decoration: none;color:black">
                     <img src="image/{{$cat->image}}" class="img-fluid" id="slicice"  style="border-radius: 50%;width:50px;height:50px;" alt="">
                     <p style="font-size: 10px">{{$cat->category_name}}</p>
@@ -68,7 +56,7 @@ Welcome page
         <div class="col-lg-9">
             <div class="row">
                 @foreach ($results as $result)
-                    <div class="col-12 col-sm-4 mb-3">
+                    <div class="col-6 col-md-6 col-sm-6 col-lg-4 mb-3">
                         <a href="{{route('thisProduct',['id'=>$result->id])}}" style="text-decoration: none;color:black">
                             <div class="card" style="border-radius: 5%;box-shadow:0px 0px 5px rgba(0,0,0,0.5);">
                                 <div class="card-header">
@@ -78,25 +66,26 @@ Welcome page
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="text-center">{{$result->product_name}}</h5>
+                                    <h4 class="text-dark text-decoration-none float-start">{{$result->product_name}}</h4>
+                                    <a href="" class="badge bg-info float-end text-decoration-none">{{$result->price}} KM</a>
+
                                 </div>
 
                                 <div class="card-footer">
-                                    <a href="" class="badge bg-info float-start text-decoration-none">{{$result->price}} KM</a>
                                     @if (!Auth::user())
                                         <a href="{{route('login')}}" class="badge bg-secondary float-end text-decoration-none text-light"><small>Ulogujte se ako želite naručiti proizvod</small></a>
                                     @endif
 
                                     @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
                                         @if (in_array($result->id,array_column(Session::get('cart',[]),'id')))
-                                            <a href="" class="badge bg-secondary text-light float-end text-decoration-none">Proizvod je u korpi</a>
+                                            <a href="" class="badge bg-secondary text-light float-end text-decoration-none badge-sm">Proizvod je u korpi</a>
                                         @else
                                             <a href="{{route('addToCart',['id'=>$result->id])}}" class="badge bg-warning text-dark float-end text-decoration-none">Dodaj u korpu</a>
                                         @endif
-                                        <br>
+                                        <br><br>
                                         <div class="card-post-footer">
-                                            <a href="{{route('payment.form',['id'=>$result->id])}}" class="badge bg-success float-start text-decoration-none">Naruci i plati odmah</a>
-                                            <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" class="badge bg-primary float-end text-decoration-none">Naruci odmah</a>
+                                            <a href="{{route('payment.form',['id'=>$result->id])}}" class="badge bg-success float-start text-decoration-none badge"><small class="text-white">Naruči i plati odmah</small></a>
+                                            <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" class="badge bg-primary float-end text-decoration-none"><small>Naruci odmah</small></a>
 
                                         </div>
                                     @endif

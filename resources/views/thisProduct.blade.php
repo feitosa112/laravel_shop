@@ -6,7 +6,7 @@ This product
 @endsection
 
 @section('content')
-
+@include('searchCard')
 
 @foreach ($results as $result)
 
