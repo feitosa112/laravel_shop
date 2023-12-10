@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
 use App\Models\MessageModel;
+use App\Models\OrderItemModel;
 use App\Models\ProductModel;
 use App\Models\SubcategoryModel;
 use App\Repositories\ProductRepository;
@@ -46,7 +47,13 @@ class ProductController extends Controller
     public function getThisProduct($id){
         $results = $this->productRepo->getProductWithId($id);
         $messages = MessageModel::with('user')->where('product_id',$id)->orderBy('created_at','desc')->get();
-        return view('thisProduct',compact('results','messages'));
+        $topProducts = OrderItemModel::with('product')
+        ->select('product_id', DB::raw('COUNT(product_id) as broj_prodaja'))
+        ->groupBy('product_id')
+        ->orderByDesc('broj_prodaja')
+        ->limit(3)
+        ->get();
+        return view('thisProduct',compact('results','messages','topProducts'));
     }
 
     public function addToCart($id){

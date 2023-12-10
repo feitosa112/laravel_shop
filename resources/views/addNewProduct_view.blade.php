@@ -7,9 +7,9 @@ Add new Product
 
 @section('content')
 
-<div class="container"style="background-color:#b4bbd6">
+<div class="container fluid"style="background-color:#b4bbd6">
     <div class="row">
-        <div class="col-4 offset-4">
+        <div class="col-12 col-lg-4 mx-auto">
             <h4 class="display-4">Dodaj novi proizvod</h4>
 
             @if ($errors->any())
@@ -37,7 +37,7 @@ Add new Product
                 <input type="number" name="price" placeholder="price" class="form-control" value="{{old('price')}}"><br>
 
                 <label for="description">Description:</label><br><br>
-                <textarea name="description" id="" cols="45" rows="5">{{old('description')}}</textarea>
+                <textarea name="description" id="" rows="5">{{old('description')}}</textarea><br>
                 <label for="image">Odaberi sliku:</label>
                 <input type="file" name="product_image" value="{{old('product_image')}}" class="form-control"><br>
                 <input type="file" name="product_image2" value="{{old('product_image2')}}"  class="form-control"><br>

@@ -27,5 +27,9 @@ class ProductModel extends Model
         return $this->hasMany(CategoryModel::class, 'id', 'category_id');
 
     }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
     use HasFactory;
 }

@@ -1,16 +1,36 @@
+@media(min-width:769px){
+    .nazivkategorije{
+        font-size: 10px;
+    }
+
+}
+
 
 @media (max-width: 768px) {
     h5 {
         font-size: 15px;
     }
+    .card-header{
+        font-size: 7px;
+    }
+    .nazivkategorije{
+        font-size: 7px;
+        text-align: center;
+    }
+    h4{
+        font-size: 11px;
+
+    }
+    #cijena{
+        width: 55px;
+    }
+    #narudzba{
+        width: 72px;
+        font-size: 7px;
+        margin-bottom: 2px;
+        margin-top: 2px;
+    }
 
     }
 
-
-
-
-
-    #slicice img {
-        display: none !important;
-    }
 

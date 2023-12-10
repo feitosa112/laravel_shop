@@ -17,5 +17,6 @@ class OrderItemModel extends Model
     {
         return $this->belongsTo(ProductModel::class, 'product_id');
     }
+
     use HasFactory;
 }

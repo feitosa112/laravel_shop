@@ -6,6 +6,7 @@ use App\Models\OrderItemModel;
 use App\Models\OrderModel;
 use App\Repositories\OrderRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -74,6 +75,8 @@ class OrderController extends Controller
         $order->save();
         return redirect(route('home'))->with('isSend','Procesuirali ste narudzbu');
     }
+
+
 
 
 }

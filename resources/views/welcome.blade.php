@@ -15,7 +15,7 @@ Welcome page
             <div class="col-2 me-2 col-md-2 col-lg-1 mb-2 mx-auto">
                 <a href="{{route('thisCategory',['id'=>$cat->id])}}" style="text-decoration: none;color:black">
                     <img src="image/{{$cat->image}}" class="img-fluid" id="slicice"  style="border-radius: 50%;width:50px;height:50px;" alt="">
-                    <p style="font-size: 10px">{{$cat->category_name}}</p>
+                    <p class="nazivkategorije">{{$cat->category_name}}</p>
                 </a>
             </div>
 
@@ -37,7 +37,7 @@ Welcome page
                                 <a href="{{route('thisCategory',['id'=>$cat->id])}}" class="btn btn-primary mb-1">{{$cat->category_name}}</a>
                             @else
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-primary dropdown-toggle mb-1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-primary dropdown-toggle mb-1"  data-bs-toggle="dropdown" aria-expanded="false">
                                         {{$cat->category_name}}
                                     </button>
                                     <ul class="dropdown-menu">
@@ -67,7 +67,7 @@ Welcome page
 
                                 <div class="card-body">
                                     <h4 class="text-dark text-decoration-none float-start">{{$result->product_name}}</h4>
-                                    <a href="" class="badge bg-info float-end text-decoration-none">{{$result->price}} KM</a>
+                                    <a id="cijena" href="" class="badge bg-info float-end text-decoration-none">{{$result->price}} KM</a>
 
                                 </div>
 
@@ -84,8 +84,8 @@ Welcome page
                                         @endif
                                         <br><br>
                                         <div class="card-post-footer">
-                                            <a href="{{route('payment.form',['id'=>$result->id])}}" class="badge bg-success float-start text-decoration-none badge"><small class="text-white">Naruči i plati odmah</small></a>
-                                            <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" class="badge bg-primary float-end text-decoration-none"><small>Naruci odmah</small></a>
+                                            <a href="{{route('payment.form',['id'=>$result->id])}}" id="narudzba" class="badge bg-success float-start text-decoration-none badge"><small class="text-white">Naruči i plati odmah</small></a>
+                                            <a href="{{route('orderExecuteNow',['id'=>$result->id])}}" id="narudzba" class="badge bg-primary float-end text-decoration-none"><small>Naruci odmah</small></a>
 
                                         </div>
                                     @endif

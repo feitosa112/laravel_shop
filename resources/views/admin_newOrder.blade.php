@@ -2,19 +2,19 @@
 
 @section('title')
 NewOrder
-    
+
 @endsection
 
 @section('content')
 
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-xl-6 col-sm-12 col-md-12 col-lg-12">
             @if (count($newOrders) === 0)
             <h4 class="display-4 text-center">Trenutno nema novih narudzbi</h4>
-            @else 
-            <h4 style="color: red" class="display-4 text-center">{{count($newOrders)===1 ? 'Imate novu narudzbu' : 'Imate nove narudzbe'}}</h4>  
+            @else
+            <h4 style="color: red" class="display-4 text-center">{{count($newOrders)===1 ? 'Imate novu narudzbu' : 'Imate nove narudzbe'}}</h4>
             @endif
 
             @foreach ($newOrders as $index=> $newOrder)
@@ -32,7 +32,7 @@ NewOrder
 
                 <tbody>
                     @foreach ($newOrder->userOrder as $user)
-                        
+
                             <tr>
                                 <th scope="row"></th>
                                 <td>{{$user->name}}</td>
@@ -40,15 +40,15 @@ NewOrder
                                 <td>{{$newOrder->id}}</td>
                                 <td><a href="{{route('newOrderView',['id'=>$newOrder->id])}}" class="badge bg-warning text-dark text-decoration-none">Wiew</a></td>
                             </tr>
-                 
+
                     @endforeach
                 </tbody>
             </table>
-            
-                
+
+
             @endforeach
         </div>
-    
+
 
 
         <div class="col-xl-6 col-sm-12 col-md-12 col-lg-12">
@@ -67,7 +67,7 @@ NewOrder
 
                 <tbody>
                     @foreach ($item ->userOrder as $user)
-                    
+
                     <tr>
                         <th scope="row"></th>
                         <td>{{$user->name}}</td>
@@ -78,13 +78,13 @@ NewOrder
                     @endforeach
                 </tbody>
             </table>
-                
+
             @endforeach
         </div>
     </div>
-    
+
 </div>
 
 
-    
+
 @endsection

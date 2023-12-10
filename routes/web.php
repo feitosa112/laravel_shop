@@ -57,7 +57,10 @@ Route::controller(OrderController::class)->group(function(){
     Route::get('/admin/newOrder','newOrder')->name('newOrder');
     Route::get('/admin/newOrder-view/{id}','newOrderView')->name('newOrderView');
     Route::get('/send-product/{id}','sendProduct')->name('send-product');
+
 });
+
+
 
 Route::post('sendMsg/{id}',[MessageController::class,'sendMsg'])->name('sendMsg')->middleware('auth');
 Route::get('exchange-rate',[CurrencyController::class,'getCurrency'])->name('exchangeRate');
