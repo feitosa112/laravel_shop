@@ -14,7 +14,7 @@ Welcome page
 
             <div class="col-2 me-2 col-md-2 col-lg-1 mb-2 mx-auto">
                 <a href="{{route('thisCategory',['id'=>$cat->id])}}" style="text-decoration: none;color:black">
-                    <img src="image/{{$cat->image}}" class="img-fluid" id="slicice"  style="border-radius: 50%;width:50px;height:50px;" alt="">
+                    <img src="image/{{$cat->image}}" class="img-fluid"  style="border-radius: 50%;width:50px;height:50px;" alt="">
                     <p class="nazivkategorije">{{$cat->category_name}}</p>
                 </a>
             </div>

@@ -4,8 +4,8 @@
     }
     .slikalogo{
         letter-spacing: 3px;
-        background-color: #042940;
-        color: #DBF227;
+        /* background-color: #042940; */
+        color: #042940;
     }
     .slikalogo1{
         display: none;
@@ -43,8 +43,11 @@
     }
     .slikalogo1{
         letter-spacing: 3px;
-        background-color: #042940;
-        color: #DBF227;
+        color: #042940;
+    }
+    #slicice{
+        width: 10px;
+        height: 10px;
     }
 
     }

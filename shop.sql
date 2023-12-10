@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 08, 2023 at 01:16 PM
+-- Generation Time: Dec 10, 2023 at 01:31 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `currency` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `currency`
@@ -100,7 +100,14 @@ INSERT INTO `currency` (`id`, `currency`, `value`, `created_at`, `updated_at`) V
 (25, 'AUD', 1.64, '2023-12-06 13:06:25', '2023-12-06 13:06:25'),
 (26, 'USD', 1.08, '2023-12-06 13:06:25', '2023-12-06 13:06:25'),
 (27, 'RSD', 117.49, '2023-12-06 13:06:25', '2023-12-06 13:06:25'),
-(28, 'SEK', 11.30, '2023-12-06 13:06:25', '2023-12-06 13:06:25');
+(28, 'SEK', 11.30, '2023-12-06 13:06:25', '2023-12-06 13:06:25'),
+(29, 'BAM', 1.96, '2023-12-09 13:34:03', '2023-12-09 13:34:03'),
+(30, 'EUR', 1.00, '2023-12-09 13:34:03', '2023-12-09 13:34:03'),
+(31, 'CHF', 0.95, '2023-12-09 13:34:03', '2023-12-09 13:34:03'),
+(32, 'AUD', 1.64, '2023-12-09 13:34:03', '2023-12-09 13:34:03'),
+(33, 'USD', 1.08, '2023-12-09 13:34:03', '2023-12-09 13:34:03'),
+(34, 'RSD', 117.17, '2023-12-09 13:34:03', '2023-12-09 13:34:03'),
+(35, 'SEK', 11.28, '2023-12-09 13:34:03', '2023-12-09 13:34:03');
 
 -- --------------------------------------------------------
 
@@ -204,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order`
@@ -223,7 +230,15 @@ INSERT INTO `order` (`id`, `user_id`, `status`, `total_amount`, `shipping_addres
 (33, 1, 'Poslano', '500', '112kuzmanovic@gmail.com', '2023-10-26 12:38:01', '2023-10-26 13:54:27'),
 (34, 1, 'Poslano', '500', '112kuzmanovic@gmail.com', '2023-10-26 13:54:42', '2023-11-05 12:45:52'),
 (35, 2, 'Poslano', '1000', 'leo@gmail.com', '2023-11-06 17:04:47', '2023-11-10 16:10:03'),
-(36, 1, 'Poslano', '220', '112kuzmanovic@gmail.com', '2023-12-06 10:48:34', '2023-12-07 10:11:14');
+(36, 1, 'Poslano', '220', '112kuzmanovic@gmail.com', '2023-12-06 10:48:34', '2023-12-07 10:11:14'),
+(37, 1, 'Poslano', '780', '112kuzmanovic@gmail.com', '2023-12-08 12:21:24', '2023-12-08 12:25:32'),
+(38, 1, 'naruceno', '35', '112kuzmanovic@gmail.com', '2023-12-09 10:02:42', '2023-12-09 10:02:42'),
+(39, 1, 'naruceno', '35', '112kuzmanovic@gmail.com', '2023-12-09 10:03:52', '2023-12-09 10:03:52'),
+(40, 1, 'naruceno', '89', '112kuzmanovic@gmail.com', '2023-12-09 10:06:59', '2023-12-09 10:06:59'),
+(41, 1, 'naruceno', '15', '112kuzmanovic@gmail.com', '2023-12-09 10:08:33', '2023-12-09 10:08:33'),
+(42, 1, 'naruceno', '15', '112kuzmanovic@gmail.com', '2023-12-09 13:00:22', '2023-12-09 13:00:22'),
+(43, 1, 'naruceno', '150', '112kuzmanovic@gmail.com', '2023-12-09 13:34:22', '2023-12-09 13:34:22'),
+(44, 1, 'naruceno', '89', '112kuzmanovic@gmail.com', '2023-12-10 11:29:57', '2023-12-10 11:29:57');
 
 -- --------------------------------------------------------
 
@@ -241,14 +256,22 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   PRIMARY KEY (`id`),
   KEY `order_items_product_id_foreign` (`product_id`),
   KEY `order_items_order_id_foreign` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_items`
 --
 
 INSERT INTO `order_items` (`id`, `product_id`, `order_id`, `created_at`, `updated_at`) VALUES
-(36, 32, 36, '2023-12-06 10:48:34', '2023-12-06 10:48:34');
+(36, 32, 36, '2023-12-06 10:48:34', '2023-12-06 10:48:34'),
+(37, 28, 37, '2023-12-08 12:21:24', '2023-12-08 12:21:24'),
+(38, 23, 38, '2023-12-09 10:02:42', '2023-12-09 10:02:42'),
+(39, 23, 39, '2023-12-09 10:03:52', '2023-12-09 10:03:52'),
+(40, 24, 40, '2023-12-09 10:06:59', '2023-12-09 10:06:59'),
+(41, 27, 41, '2023-12-09 10:08:33', '2023-12-09 10:08:33'),
+(42, 27, 42, '2023-12-09 13:00:22', '2023-12-09 13:00:22'),
+(43, 31, 43, '2023-12-09 13:34:22', '2023-12-09 13:34:22'),
+(44, 24, 44, '2023-12-10 11:29:57', '2023-12-10 11:29:57');
 
 -- --------------------------------------------------------
 
@@ -327,14 +350,14 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `product_name`, `product_image`, `price`, `category_id`, `subcategory_id`, `created_at`, `updated_at`, `product_image2`, `product_image3`, `product_image4`, `product_image5`, `product_image6`, `description`, `amount`, `views`) VALUES
-(23, 'Kosarkaska lopta', 'lopta.jpg', 35, 30, 6, '0000-00-00 00:00:00', '2023-12-05 16:04:57', '', '', '', '', '', 'spalding', 25, 1),
-(24, 'Pumpa za bazen', 'pumpa.jpg', 89, 30, 5, '0000-00-00 00:00:00', '2023-12-08 12:09:54', '', '', '', '', '', 'Intex pumpa', 25, 3),
-(27, 'Rucica mjenjaca', 'mjenjac.jpg', 15, 2, 1, '0000-00-00 00:00:00', '2023-12-06 11:13:37', 'mjenjac2.jpg', '', '', '', '', 'Univerzalna rucica mjenjaca', 70, 3),
+(23, 'Kosarkaska lopta', 'lopta.jpg', 35, 30, 6, '0000-00-00 00:00:00', '2023-12-10 12:03:10', '', '', '', '', '', 'spalding', 25, 19),
+(24, 'Pumpa za bazen', 'pumpa.jpg', 89, 30, 5, '0000-00-00 00:00:00', '2023-12-10 11:27:17', '', '', '', '', '', 'Intex pumpa', 25, 6),
+(27, 'Rucica mjenjaca', 'mjenjac.jpg', 15, 2, 1, '0000-00-00 00:00:00', '2023-12-10 11:26:07', 'mjenjac2.jpg', '', '', '', '', 'Univerzalna rucica mjenjaca', 70, 22),
 (28, 'Lovacka puska', 'puska.jpg', 780, 3, 8, '0000-00-00 00:00:00', '2023-12-06 13:06:42', 'puska2.jpg', 'puska3.jpg', '', '', '', 'Lovacka puska,nova,sa optikom', 1, 1),
 (29, 'Rucni sat', 'sat.jpg', 290, 28, 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', 'Muski sat', 2, 0),
 (30, 'Samsung galaxy s4', 'galaxys4.jpg', 400, 31, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'galaxys42.jpg', '', '', '', '', 'Nov', 1, 0),
-(31, 'Skije', 'skije.jpg', 150, 30, 10, '0000-00-00 00:00:00', '2023-12-06 10:38:05', 'skije2.jpg', 'skije3.jpg', '', '', '', 'Elan skije,polovne', 1, 1),
-(32, 'Skije', 'elan.jpg', 220, 30, 10, NULL, '2023-12-06 10:48:19', 'elan2.jpg', 'elan3.jpg', 'elan4.jpg', 'elan5.jpg', 'elan6.jpg', 'Skije elan,174 cm,radius 17', 1, 2),
+(31, 'Skije', 'skije.jpg', 150, 30, 10, '0000-00-00 00:00:00', '2023-12-10 12:03:29', 'skije2.jpg', 'skije3.jpg', '', '', '', 'Elan skije,polovne', 1, 74),
+(32, 'Skije', 'elan.jpg', 220, 30, 10, NULL, '2023-12-10 10:32:23', 'elan2.jpg', 'elan3.jpg', 'elan4.jpg', 'elan5.jpg', 'elan6.jpg', 'Skije elan,174 cm,radius 17', 1, 4),
 (33, 'Kamere za video nadzor', '17019546241.png', 100, 29, NULL, '2023-12-07 12:10:24', '2023-12-07 12:10:24', '17019546242.jpg', '17019546243.png', '17019546244.jpg', NULL, NULL, NULL, 10, 0),
 (34, 'Alat za vrt', '17019553491.jpg', 30, 27, NULL, '2023-12-07 12:22:29', '2023-12-07 12:22:54', '17019553742.jpg', '17019553743.png', '17019553744.jpg', NULL, NULL, NULL, 10, 0);
 
