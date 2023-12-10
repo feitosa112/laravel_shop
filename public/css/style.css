@@ -2,6 +2,14 @@
     .nazivkategorije{
         font-size: 10px;
     }
+    .slikalogo{
+        letter-spacing: 3px;
+        background-color: #042940;
+        color: #DBF227;
+    }
+    .slikalogo1{
+        display: none;
+    }
 
 }
 
@@ -29,6 +37,14 @@
         font-size: 7px;
         margin-bottom: 2px;
         margin-top: 2px;
+    }
+    .slikalogo{
+        display: none;
+    }
+    .slikalogo1{
+        letter-spacing: 3px;
+        background-color: #042940;
+        color: #DBF227;
     }
 
     }
