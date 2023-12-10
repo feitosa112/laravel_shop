@@ -5,6 +5,7 @@ Welcome page
 
 @endsection
 @section('content')
+
 {{-- @dd($results->links()->elements) --}}
 
  <div class="container">
