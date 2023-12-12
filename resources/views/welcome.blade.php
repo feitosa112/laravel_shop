@@ -5,7 +5,7 @@ Welcome page
 
 @endsection
 @section('content')
-
+{{-- @dd($bestSellingProducts) --}}
 {{-- @dd($results->links()->elements) --}}
 
  <div class="container">
@@ -27,37 +27,41 @@ Welcome page
 </div>
 <br>
 
-<div class="container text-center">
+<div class="container-fluid text-center">
+
     <div class="row">
-        <div class="col-lg-3">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <div class="btn-group dropend flex-column d-none d-lg-flex">
-                        @foreach ($categories1 as $cat)
-                            @if ($cat->subcategories->isEmpty())
-                                <a href="{{route('thisCategory',['id'=>$cat->id])}}" class="btn btn-primary mb-1">{{$cat->category_name}}</a>
-                            @else
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary dropdown-toggle mb-1"  data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{$cat->category_name}}
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        @foreach ($cat->subcategories as $subcat)
-                                            <li><a class="dropdown-item" href="{{ route('thisSubCategory', ['id' => $subcat->id]) }}">{{$subcat->subcategory_name}}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
+
+
+
+        <div class="col-lg-1 me-5">
+            <div class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="btn-group dropend flex-column d-none d-lg-flex">
+                    @foreach ($categories as $cat)
+                    @if ($cat->subcategories->isEmpty())
+                        <a href="{{route('thisCategory',['id'=>$cat->id])}}" class="btn btn-primary mb-1">{{$cat->category_name}}</a>
+                    @else
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle mb-1"  data-bs-toggle="dropdown" aria-expanded="false">
+                                {{$cat->category_name}}
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach ($cat->subcategories as $subcat)
+                                    <li><a class="dropdown-item" href="{{ route('thisSubCategory', ['id' => $subcat->id]) }}">{{$subcat->subcategory_name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    @endforeach
                 </div>
-            </nav>
+            </div>
         </div>
 
-        <div class="col-lg-9">
-            <div class="row">
+
+        <div class="col-lg-8">
+            <div class="row ms-5 me-2">
                 @foreach ($results as $result)
-                    <div class="col-6 col-md-6 col-sm-6 col-lg-4 mb-3">
+                    <div class="col-6 col-md-6 col-sm-6 col-lg-4 mb-2">
                         <a href="{{route('thisProduct',['id'=>$result->id])}}" style="text-decoration: none;color:black">
                             <div class="card" style="border-radius: 5%;box-shadow:0px 0px 5px rgba(0,0,0,0.5);">
                                 <div class="card-header">
@@ -74,7 +78,7 @@ Welcome page
 
                                 <div class="card-footer">
                                     @if (!Auth::user())
-                                        <a href="{{route('login')}}" class="badge bg-secondary float-end text-decoration-none text-light"><small>Ulogujte se ako želite naručiti proizvod</small></a>
+                                        <a href="{{route('login')}}" class="badge bg-secondary float-end text-decoration-none text-light"><small id="narudzba">Ulogujte se ako želite naručiti proizvod</small></a>
                                     @endif
 
                                     @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
@@ -102,23 +106,26 @@ Welcome page
                         </a>
                     </div>
                 @endforeach
-            </div>
+                <div class="pagination justify-content-center">
+                    @if ($paginator->currentPage() > 1)
+                        <a href="{{ $paginator->previousPageUrl() }}" class="btn btn-outline-primary me-2">&laquo; Previous</a>
+                    @endif
 
-            <div class="pagination justify-content-center">
-                @if ($paginator->currentPage() > 1)
-                    <a href="{{ $paginator->previousPageUrl() }}" class="btn btn-outline-primary me-2">&laquo; Previous</a>
-                @endif
+                    @for ($i = 1; $i <= $paginator->lastPage(); $i++)
+                        <a href="{{ $paginator->url($i) }}" class="btn btn-outline-primary me-2 {{ $paginator->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
+                    @endfor
 
-                @for ($i = 1; $i <= $paginator->lastPage(); $i++)
-                    <a href="{{ $paginator->url($i) }}" class="btn btn-outline-primary me-2 {{ $paginator->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
-                @endfor
-
-                @if ($paginator->hasMorePages())
-                    <a href="{{ $paginator->nextPageUrl() }}" class="btn btn-outline-primary ms-2">Next &raquo;</a>
-                @endif
+                    @if ($paginator->hasMorePages())
+                        <a href="{{ $paginator->nextPageUrl() }}" class="btn btn-outline-primary ms-2">Next &raquo;</a>
+                    @endif
+                </div>
             </div>
         </div>
+
+
+        @include('topProducts')
     </div>
+
 </div>
 
 

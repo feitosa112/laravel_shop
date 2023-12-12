@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\BestSellingProductsService;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(BestSellingProductsService::class, function ($app) {
+            return new BestSellingProductsService();
+        });
     }
 
     /**
@@ -23,6 +27,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $bestSellingProductsService = new BestSellingProductsService();
+    $bestSellingProducts = $bestSellingProductsService->getBestSellingProducts();
+
+    // Deljenje podataka sa svim Blade-ovima putem Composer-a
+    View::composer('*', function ($view) use ($bestSellingProducts) {
+        $view->with('bestSellingProducts', $bestSellingProducts);
+    });
     }
 }
