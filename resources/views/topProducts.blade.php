@@ -1,6 +1,8 @@
 <div class="col-6 col-lg-2 col-md-6 col-sm-6 mx-auto mt-1" style="background-color:aquamarine">
     <h4>Najprodavaniji proizvodi</h4><br>
 
+    @if ($bestSellingProducts != null)
+
     @foreach ($bestSellingProducts as $topProduct)
 
        @foreach ($topProduct as $top)
@@ -20,4 +22,6 @@
        @endforeach
 
     @endforeach
+    @endif
+
 </div>
