@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\FavoriteModel;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,7 @@ class HomeController extends Controller
         $categories1=CategoryModel::with('subcategories')->get();
         $results = ProductModel::paginate(6);
         $paginator = $results->links()->paginator;
-        return view('welcome',['categories'=>$categories,'results'=>$results,'paginator'=>$paginator,'categories1'=>$categories1]);
+        $favorites = FavoriteModel::all();
+        return view('welcome',['categories'=>$categories,'results'=>$results,'paginator'=>$paginator,'categories1'=>$categories1,'favorites'=>$favorites]);
     }
 }

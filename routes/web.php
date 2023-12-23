@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -69,3 +70,7 @@ Route::get('/todays-exchange-rate',[CurrencyController::class,'todaysExchangeRat
 Route::post('/payment/process/{id}', 'PaymentController@processPayment')->name('payment.process');
 
 
+Route::controller(FavoriteController::class)->group(function(){
+    Route::get('add-to-favorite/{id}','addToFavorite')->name('addToFavorite');
+    Route::get('remove-from-favorites/{id}','removeFromFavorites')->name('removeFromFavorites');
+});

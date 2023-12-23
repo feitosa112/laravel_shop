@@ -2,7 +2,7 @@
 
 @section('title')
 My order
-    
+
 @endsection
 
 @section('content')
@@ -14,6 +14,8 @@ My order
 @else
 
 @foreach ($orders as $index => $order)
+@if ($orders != null)
+
 <table class="table table-dark">
     <thead>
       <tr>
@@ -36,9 +38,11 @@ My order
 
     </tr>
     @endforeach
-    </tbody>  
-  </table> 
+    </tbody>
+  </table>
   <a class="btn btn-success">Total:{{$order->orderItems->pluck('product.price')->sum()}} KM</a><br><br><br>
+@endif
+
 @endforeach
 
 @endif
@@ -46,6 +50,6 @@ My order
 
 
 
-    
+
 @endsection
 

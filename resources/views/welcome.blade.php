@@ -7,7 +7,7 @@ Welcome page
 @section('content')
 {{-- @dd($bestSellingProducts) --}}
 {{-- @dd($results->links()->elements) --}}
-
+{{-- @dd($favorites) --}}
  <div class="container">
    @include('searchCard')
      <div class="row" style="">
@@ -82,10 +82,17 @@ Welcome page
                                     @endif
 
                                     @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
+
+                                         @if($favorites->where('product_id', $result->id)->where('user_id', Auth::user()->id)->count() > 0)
+                                         <a href="{{route('removeFromFavorites',['id'=>$result->id])}}" title="Remove from favorites" class="float-start text-decoration-none text-dark"><i class="fa-solid fa-heart"></i></a>
+                                         @else
+                                         <a href="{{route('addToFavorite',['id'=>$result->id])}}" title="Add to favorites" class="float-start text-decoration-none text-dark"><i class="fa-regular fa-heart"></i></a>
+                                        @endif
+
                                         @if (in_array($result->id,array_column(Session::get('cart',[]),'id')))
                                             <a href="" class="badge bg-secondary text-light float-end text-decoration-none badge-sm">Proizvod je u korpi</a>
                                         @else
-                                            <a href="{{route('addToCart',['id'=>$result->id])}}" class="badge bg-warning text-dark float-end text-decoration-none">Dodaj u korpu</a>
+                                            <a href="{{route('addToCart',['id'=>$result->id])}}" title="Dodaj proizvod u korpu" class="badge bg-warning text-dark float-end text-decoration-none">Dodaj u korpu</a>
                                         @endif
                                         <br><br>
                                         <div class="card-post-footer">
@@ -101,7 +108,8 @@ Welcome page
                                     @endif
                                 </div><br>
 
-                                <p class="float-left"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
+                                <p class="float-start"><small><i>Broj pregleda:{{$result->views}}</i></small></p>
+
                             </div><br>
                         </a>
                     </div>
