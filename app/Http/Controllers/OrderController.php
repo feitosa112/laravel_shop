@@ -60,7 +60,7 @@ class OrderController extends Controller
 
     public function newOrder(){
         $allOrders = OrderModel::with('orderItems')->get();
-        $newOrders = OrderModel::with('orderItems')->where('status','Naruceno')->get();
+        $newOrders = OrderModel::with('orderItems')->where('status','naruceno')->get();
         return view('admin_newOrder',compact('newOrders','allOrders'));
     }
 

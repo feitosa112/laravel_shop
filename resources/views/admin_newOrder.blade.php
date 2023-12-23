@@ -11,10 +11,11 @@ NewOrder
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-6 col-sm-12 col-md-12 col-lg-12">
+            {{-- @dd($newOrders) --}}
             @if (count($newOrders) === 0)
             <h4 class="display-4 text-center">Trenutno nema novih narudzbi</h4>
             @else
-            <h4 style="color: red" class="display-4 text-center">{{count($newOrders)===1 ? 'Imate novu narudzbu' : 'Imate nove narudzbe'}}</h4>
+            <h4 style="color: red" class="display-4 text-center">{{count($newOrders)===1 ? 'Imate novu narudzbu'.count($newOrders) : 'Imate nove narudzbe'.count($newOrders)}}</h4>
             @endif
 
             @foreach ($newOrders as $index=> $newOrder)
