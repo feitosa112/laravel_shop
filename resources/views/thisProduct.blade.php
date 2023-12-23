@@ -128,9 +128,10 @@ This product
 
     <h4 class="text-center mt-5">Najcesce prodavani proizvodi</h4>
     @foreach ($topProducts as $topProduct)
+
     {{-- @dd($topProduct->product) --}}
     <div class="col-lg-4 col-sm-3 col-md-4 col-4">
-        <a href="{{route('thisProduct',['id'=>$topProduct->product_id])}}" class="text-decoration-none text-dark">
+        <a href="{{route('thisProduct',['name'=>$topProduct->product->product_name,'id'=>$topProduct->product_id])}}" class="text-decoration-none text-dark">
             <div class="card">
                 <div class="card-header text-center">{{$topProduct->product->product_name}}</div>
                 <div class="card-body">

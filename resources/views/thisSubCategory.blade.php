@@ -12,7 +12,7 @@ This subcategory
         @foreach ($results as $result)
 
         <div class="col-6 col-md-6 col-sm-6 col-lg-3 mb-3">
-            <a href="{{route('thisProduct',['id'=>$result->id])}}" style="text-decoration: none;color:black">
+            <a href="{{route('thisProduct',['name'=>$result->product_name,'id'=>$result->id])}}" style="text-decoration: none;color:black">
                 <div class="card" style="border-radius: 5%;box-shadow:0px 0px 5px rgba(0,0,0,0.5)">
                     <div class="card-header">
                         @if ($result->product_image != null)

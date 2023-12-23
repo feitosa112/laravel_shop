@@ -29,7 +29,7 @@ class ProductModel extends Model
     }
     public function orderItems()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItemModel::class);
     }
     use HasFactory;
 }

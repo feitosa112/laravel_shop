@@ -19,9 +19,8 @@ Welcome page
    {{-- Imamo row u kojem ispisujemo sve kategorije koje dobijamo iz $categories --}}
      <div class="row" style="">
         @foreach ($categories as $cat)
-
             <div class="col-2 me-2 col-md-2 col-lg-1 mb-2 mx-auto">
-                <a href="{{route('thisCategory',['id'=>$cat->id])}}" style="text-decoration: none;color:black">
+                <a href="{{route('thisCategory',['name'=>$cat->category_name])}}" style="text-decoration: none;color:black">
                     <img src="image/{{$cat->image}}" class="img-fluid"  style="border-radius: 50%;width:50px;height:50px;" alt="">
                     <p class="nazivkategorije">{{$cat->category_name}}</p>
                 </a>
@@ -45,7 +44,7 @@ Welcome page
                 <div class="btn-group dropend flex-column d-none d-lg-flex">
                     @foreach ($categories as $cat)
                     @if ($cat->subcategories->isEmpty())
-                        <a href="{{route('thisCategory',['id'=>$cat->id])}}" class="btn btn-primary mb-1">{{$cat->category_name}}</a>
+                        <a href="{{route('thisCategory',['name'=>$cat->category_name])}}" class="btn btn-primary mb-1">{{$cat->category_name}}</a>
                     @else
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary dropdown-toggle mb-1"  data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,7 +52,7 @@ Welcome page
                             </button>
                             <ul class="dropdown-menu">
                                 @foreach ($cat->subcategories as $subcat)
-                                    <li><a class="dropdown-item" href="{{ route('thisSubCategory', ['id' => $subcat->id]) }}">{{$subcat->subcategory_name}}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('thisSubCategory', ['name' => $subcat->subcategory_name]) }}">{{$subcat->subcategory_name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -69,7 +68,7 @@ Welcome page
             <div class="row ms-5 me-2">
                 @foreach ($results as $result)
                     <div class="col-6 col-md-6 col-sm-6 col-lg-4 mb-2">
-                        <a href="{{route('thisProduct',['id'=>$result->id])}}" style="text-decoration: none;color:black">
+                        <a href="{{route('thisProduct',['name'=>$result->product_name,'id'=>$result->id])}}" style="text-decoration: none;color:black">
                             <div class="card" style="border-radius: 5%;box-shadow:0px 0px 5px rgba(0,0,0,0.5);">
                                 <div class="card-header">
                                     @if ($result->product_image != null)

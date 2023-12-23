@@ -21,9 +21,13 @@ class ProductController extends Controller
         $this->productRepo = new ProductRepository();
     }
 
-    public function thisCategory($id){
+    public function thisCategory($name){
+        // $cat = CategoryModel::where('category_name',$name)->get()->first();
+        // $results = ProductModel::where('category_id',$cat->id)->get();
 
-        $results = $this->productRepo->getProductWithCategory($id);
+
+
+        $results = $this->productRepo->getProductWithCategory($name);
         $paginator = $results->links()->paginator;
         if(count($results) === 0){
             return redirect()->back()->with('error','Nema rezultata pretrage');
@@ -32,8 +36,8 @@ class ProductController extends Controller
         }
     }
 
-    public function thisSubCategory($id){
-        $results = $this->productRepo->getProductWithSubcategory($id);
+    public function thisSubCategory($name){
+        $results = $this->productRepo->getProductWithSubcategory($name);
         $paginator = $results->links()->paginator;
 
         if(count($results) === 0){
@@ -44,8 +48,8 @@ class ProductController extends Controller
         }
     }
 
-    public function getThisProduct($id){
-        $results = $this->productRepo->getProductWithId($id);
+    public function getThisProduct($name,$id){
+        $results = $this->productRepo->getProductWithId($name,$id);
         $messages = MessageModel::with('user')->where('product_id',$id)->orderBy('created_at','desc')->get();
         $topProducts = OrderItemModel::with('product')
         ->select('product_id', DB::raw('COUNT(product_id) as broj_prodaja'))

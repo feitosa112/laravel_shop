@@ -35,9 +35,9 @@ Route::controller(CategoryController::class)->prefix('/cat')->group(function(){
 });
 
 Route::controller(ProductController::class)->group(function(){
-    Route::get('/category/{id}','thisCategory')->name('thisCategory');
-    Route::get('/subcategory/{id}','thisSubCategory')->name('thisSubCategory');
-    Route::get('/thisProduct/{id}','getThisProduct')->name('thisProduct');
+    Route::get('/category/{name}','thisCategory')->name('thisCategory');
+    Route::get('/subcategory/{name}','thisSubCategory')->name('thisSubCategory');
+    Route::get('/thisProduct/{name}/{id}','getThisProduct')->name('thisProduct');
     Route::get('/cart/{id}','addToCart')->name('addToCart')->middleware('auth');
     Route::get('/cart','cartView')->name('cartView');
     Route::get('/payment/{id}','showPaymentForm')->name('payment.form');

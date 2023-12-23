@@ -1,7 +1,9 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\CategoryModel;
 use App\Models\ProductModel;
+use App\Models\SubcategoryModel;
 use Illuminate\Support\Facades\Auth;
 
 class ProductRepository {
@@ -11,20 +13,23 @@ class ProductRepository {
         $this->productModel = new ProductModel();
     }
 
-    public function getProductWithCategory($id){
-        $result = $this->productModel->where(['category_id'=>$id])->paginate(6);
+    public function getProductWithCategory($name){
+        $cat = CategoryModel::where('category_name',$name)->get()->first();
+        $result = $this->productModel->where(['category_id'=>$cat->id])->paginate(6);
 
 
         return $result;
     }
 
-    public function getProductWithSubcategory($id){
-        return $this->productModel->where(['subcategory_id'=>$id])->paginate(6);
+    public function getProductWithSubcategory($name){
+        $sub = SubcategoryModel::where('subcategory_name',$name)->get()->first();
+        return $this->productModel->where(['subcategory_id'=>$sub->id])->paginate(6);
     }
 
-    public function getProductWithId($id){
+    public function getProductWithId($name,$id){
         if(Auth::user() && Auth::user()->email !== 'admin@gmail.com' || !Auth::user()){
-            $this->productModel->where(['id'=>$id])->increment('views');
+            $prod = ProductModel::where('product_name',$name)->where('id',$id)->get()->first();
+            $this->productModel->where(['id'=>$prod->id])->increment('views');
         }
         return $this->productModel->where(['id'=>$id])->get();
     }
