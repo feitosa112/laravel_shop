@@ -8,8 +8,15 @@ Welcome page
 {{-- @dd($bestSellingProducts) --}}
 {{-- @dd($results->links()->elements) --}}
 {{-- @dd($favorites) --}}
+
+{{-- Kada se ulogujemo dolazimo na ovu stranicu,pocetna --}}
+
+
  <div class="container">
+    {{-- Search polje includujemo iz searchCard filea --}}
    @include('searchCard')
+
+   {{-- Imamo row u kojem ispisujemo sve kategorije koje dobijamo iz $categories --}}
      <div class="row" style="">
         @foreach ($categories as $cat)
 
@@ -32,7 +39,7 @@ Welcome page
     <div class="row">
 
 
-
+        {{-- Ovde imamo meni sa kategorijama i podkategorijama kojima mozemo pristupiti --}}
         <div class="col-lg-1 me-5">
             <div class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="btn-group dropend flex-column d-none d-lg-flex">
@@ -57,7 +64,7 @@ Welcome page
             </div>
         </div>
 
-
+        {{-- U ovom dijelu pristupamo svim proizvodima iz baze preko $results i ispisujemo ih --}}
         <div class="col-lg-8">
             <div class="row ms-5 me-2">
                 @foreach ($results as $result)
@@ -77,10 +84,11 @@ Welcome page
                                 </div>
 
                                 <div class="card-footer">
+                                    {{-- Ukoliko nismo ulogovani u okviru svakog proizvoda stoji obavjest da se trebamo ulogovati ako zeimo da narucimo proizvod --}}
                                     @if (!Auth::user())
                                         <a href="{{route('login')}}" class="badge bg-secondary float-end text-decoration-none text-light"><small id="narudzba">Ulogujte se ako želite naručiti proizvod</small></a>
                                     @endif
-
+                                    {{-- Ukoliko smo ulogovani ali ne kao admin imamo odredjene mogucnosti --}}
                                     @if (Auth::user() && Auth::user()->email !== 'admin@gmail.com')
 
                                          @if($favorites->where('product_id', $result->id)->where('user_id', Auth::user()->id)->count() > 0)
@@ -101,7 +109,7 @@ Welcome page
 
                                         </div>
                                     @endif
-
+                                        {{-- Provjeravamo da li smo ulogovani kao admin,ako jesmo imamo odredjene mogucnosti --}}
                                     @if (Auth::user() && Auth::user()->email === 'admin@gmail.com')
                                         <a href="{{route('editProductView',['id'=>$result->id])}}" class="badge bg-warning text-dark  float-end text-decoration-none">Edit</a>
                                         <a href="{{route('deleteProduct',['id'=>$result->id])}}" class="badge bg-danger text-dark float-end text-decoration-none">Delete</a>
@@ -114,6 +122,7 @@ Welcome page
                         </a>
                     </div>
                 @endforeach
+                {{-- Paginator,omogucava ispis samo nekoliko proizvoda po stranici sa opciom prelaska na sledecu ili na prethodnu stranicu --}}
                 <div class="pagination justify-content-center">
                     @if ($paginator->currentPage() > 1)
                         <a href="{{ $paginator->previousPageUrl() }}" class="btn btn-outline-primary me-2">&laquo; Previous</a>
@@ -130,7 +139,7 @@ Welcome page
             </div>
         </div>
 
-
+        {{-- Iz filea topProducts ukljucujemo najprodavanije proizvode na osnovu tabele orderItems --}}
         @include('topProducts')
     </div>
 
