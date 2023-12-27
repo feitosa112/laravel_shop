@@ -1,14 +1,21 @@
 @extends('layouts.app')
 
 @section('title')
-This category
+{{-- {{$allCategories[0]->category_name}} --}}
+@foreach ($results as $result)
+@foreach ($result->productCat as $cat)
+{{$cat->category_name}}
+
+@endforeach
+
+@endforeach
 
 @endsection
 
 @section('content')
-
 @include('searchCard')
 <div class="container">
+
     <div class="row">
         @foreach ($results as $result)
 

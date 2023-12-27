@@ -26,12 +26,12 @@ class BestSellingProductsService
         ->limit(3)
         ->get();
 
-        // Formatiraj rezultate po potrebi
+
         return $this->formatResults($bestSellingProducts);
     }
 
     /**
-     * Formatiranje rezultata prema potrebi.
+
      *
      * @param \Illuminate\Support\Collection $results
      * @return \Illuminate\Support\Collection

@@ -1,4 +1,6 @@
 {{-- U pvpm fileu imamo najprodavanije proizvode u varijabli $bestSellingProducts i ovaj file ukljucujemo u welcome page --}}
+    {{-- bestSellingProducts dobijamo iz servisa BestSellingProductService --}}
+
 <div class="col-6 col-lg-2 col-md-6 col-sm-6 mx-auto mt-1" style="background-color:aquamarine">
     <h4>Najprodavaniji proizvodi</h4><br>
 

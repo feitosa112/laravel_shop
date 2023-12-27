@@ -1,14 +1,26 @@
 @extends('layouts.app')
 
 @section('title')
-This subcategory
+
+
+@foreach ($results as $result)
+
+@foreach ($result->subcategories as $subcat)
+
+{{$subcat->subcategory_name}}
+
+@endforeach
+@endforeach
 
 @endsection
 
 @section('content')
+
 @include('searchCard')
+
 <div class="container">
     <div class="row">
+
         @foreach ($results as $result)
 
         <div class="col-6 col-md-6 col-sm-6 col-lg-3 mb-3">

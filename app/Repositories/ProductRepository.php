@@ -22,7 +22,7 @@ class ProductRepository {
     }
 
     public function getProductWithSubcategory($name){
-        $sub = SubcategoryModel::where('subcategory_name',$name)->get()->first();
+        $sub = SubcategoryModel::where('subcategory_name',$name)->with('subcategories')->get()->first();
         return $this->productModel->where(['subcategory_id'=>$sub->id])->paginate(6);
     }
 

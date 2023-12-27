@@ -27,6 +27,10 @@ class ProductModel extends Model
         return $this->hasMany(CategoryModel::class, 'id', 'category_id');
 
     }
+
+    public function subcategories(){
+        return $this->hasMany(SubcategoryModel::class,'id','subcategory_id');
+    }
     public function orderItems()
     {
         return $this->hasMany(OrderItemModel::class);

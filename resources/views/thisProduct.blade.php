@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-This product
+{{$results[0]->product_name}}
 
 @endsection
 
@@ -126,27 +126,30 @@ This product
 
 <div class="row">
 
+    {{-- bestSellingProducts dobijamo iz servisa BestSellingProductService --}}
     <h4 class="text-center mt-5">Najcesce prodavani proizvodi</h4>
-    @foreach ($topProducts as $topProduct)
-
+    @foreach ($bestSellingProducts as $topProducts)
+        @foreach ($topProducts as $topProduct)
+            {{-- @dd($topProduct) --}}
     {{-- @dd($topProduct->product) --}}
     <div class="col-lg-4 col-sm-3 col-md-4 col-4">
-        <a href="{{route('thisProduct',['name'=>$topProduct->product->product_name,'id'=>$topProduct->product_id])}}" class="text-decoration-none text-dark">
+        <a href="{{route('thisProduct',['name'=>$topProduct->product_name,'id'=>$topProduct->id])}}" class="text-decoration-none text-dark">
             <div class="card">
-                <div class="card-header text-center">{{$topProduct->product->product_name}}</div>
+                <div class="card-header text-center">{{$topProduct->product_name}}</div>
                 <div class="card-body">
-                    @if ($topProduct->product->product_image !=null)
-                        <img src="/image/{{$topProduct->product->product_image}}" alt="" style="width:100%;height:30%">
+                    @if ($topProduct->product_image !=null)
+                        <img src="/image/{{$topProduct->product_image}}" alt="" style="width:100%;height:30%">
                     @endif
                 </div>
                 <div class="card-footer">
-                     <a href="" class="badge bg-success bg-sm float-start" style="text-decoration:none;font-size:10px">{{$topProduct->product->price}} KM</a>
+                     <a href="" class="badge bg-success bg-sm float-start" style="text-decoration:none;font-size:10px">{{$topProduct->price}} KM</a>
 
                 </div>
             </div><br>
         </a>
     </div>
 
+    @endforeach
 
     @endforeach
 

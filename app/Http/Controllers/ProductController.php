@@ -51,13 +51,8 @@ class ProductController extends Controller
     public function getThisProduct($name,$id){
         $results = $this->productRepo->getProductWithId($name,$id);
         $messages = MessageModel::with('user')->where('product_id',$id)->orderBy('created_at','desc')->get();
-        $topProducts = OrderItemModel::with('product')
-        ->select('product_id', DB::raw('COUNT(product_id) as broj_prodaja'))
-        ->groupBy('product_id')
-        ->orderByDesc('broj_prodaja')
-        ->limit(3)
-        ->get();
-        return view('thisProduct',compact('results','messages','topProducts'));
+
+        return view('thisProduct',compact('results','messages'));
     }
 
     public function addToCart($id){
